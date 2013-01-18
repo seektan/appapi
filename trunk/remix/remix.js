@@ -29,8 +29,8 @@ function remix(){
 
 	htmlStr += '</ul><i class="rprev"></i><i class="rnext"></i>';
 	
-	if(var _rNode = document.querySelector(".remix")){
-		_rNode.innerHTML = htmlStr;
+	if(document.querySelector(".remix")){
+		document.querySelector(".remix").innerHTML = htmlStr;
 	}else{
 		var _node = document.createElement("div");
 		_node.className = "remix";
