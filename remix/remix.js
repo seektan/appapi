@@ -15,8 +15,8 @@ function remix(){
 	for(var i=0, len=matches.length; i<len; i++){
 		var _item={};
 		
-		_item.title = matches[i].querySelectorAll("h3 a")[2].innerHTML;
-		_item.url = matches[i].querySelectorAll("h3 a")[2].getAttribute("href");
+		_item.title = matches[i].querySelectorAll("h3 a")[2].innerHTML || matches[i].querySelectorAll("h3 a")[0].innerHTML;
+		_item.url = matches[i].querySelectorAll("h3 a")[2].getAttribute("href") || matches[i].querySelectorAll("h3 a")[0].getAttribute("href");
 		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
 		_item.price = matches[i].querySelector(".pp_price").innerHTML;
 		_item.offered = matches[i].querySelector(".attribute .total").innerHTML;
