@@ -1,3 +1,4 @@
+remix()
 function remix(){
 	var matches = document.querySelectorAll(".item-show"),
 		data = [],
