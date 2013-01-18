@@ -1,7 +1,8 @@
 remix();
 window.onresize = remix;
 function remix(){
-    var cssLink = document.createElement('link');
+
+	var cssLink = document.createElement('link');
 		cssLink.rel  = 'stylesheet';
 		cssLink.type = 'text/css';
 		cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
@@ -39,8 +40,8 @@ function remix(){
 	}
 
 
-	var _rlist = _node.querySelector(".rlist"),
-		_height = parseInt(window.getComputedStyle(_rlist,null).getPropertyValue("height")),
+	var _rlist = document.querySelector(".remix .rlist"),
+		_height = _rlist.offsetHeight,
 		_viewH = document.documentElement.clientHeight,
 		_step = parseInt(_height/_viewH) - 1,
 		_cur = 0,
