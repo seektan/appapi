@@ -1,4 +1,5 @@
 remix();
+window.onresize = remix;
 function remix(){
     var cssLink = document.createElement('link');
 		cssLink.rel  = 'stylesheet';
@@ -34,7 +35,8 @@ function remix(){
 
 	var _rlist = _node.querySelector(".rlist"),
 		_height = _rlist.offsetHeight,
-		_step = _height/document.documentElement.clientHeight - 1,
+		_viewH = document.documentElement.clientHeight,
+		_step = _height/_viewH - 1,
 		_cur = 0,
 		_prev = _node.querySelector(".rprev"),
 		_next = _node.querySelector(".rnext");
@@ -51,7 +53,7 @@ function remix(){
 				_cur = _step;
 			}
 		}
-		_rlist.style.top = "-" + (240 * _cur) + "px";
+		_rlist.style.top = "-" + (_viewH * _cur) + "px";
 	}
 
 	if(_step > 0){
