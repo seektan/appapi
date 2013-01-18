@@ -28,10 +28,16 @@ function remix(){
 	}
 
 	htmlStr += '</ul><i class="rprev"></i><i class="rnext"></i>';
-	var _node = document.createElement("div");
+	
+	if(var _rNode = document.querySelector(".remix")){
+		_rNode.innerHTML = htmlStr;
+	}else{
+		var _node = document.createElement("div");
 		_node.className = "remix";
 		_node.innerHTML = htmlStr;
-	document.body.appendChild(_node);
+		document.body.appendChild(_node);
+	}
+
 
 	var _rlist = _node.querySelector(".rlist"),
 		_height = _rlist.offsetHeight,
