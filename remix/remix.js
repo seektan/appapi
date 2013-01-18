@@ -36,7 +36,7 @@ function remix(){
 	var _rlist = _node.querySelector(".rlist"),
 		_height = _rlist.offsetHeight,
 		_viewH = document.documentElement.clientHeight,
-		_step = _height/_viewH - 1,
+		_step = parseInt(_height/_viewH) - 1,
 		_cur = 0,
 		_prev = _node.querySelector(".rprev"),
 		_next = _node.querySelector(".rnext");
