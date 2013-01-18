@@ -40,7 +40,7 @@ function remix(){
 
 
 	var _rlist = _node.querySelector(".rlist"),
-		_height = window.getComputedStyle(_rlist,null).getPropertyValue("height"),
+		_height = parseInt(window.getComputedStyle(_rlist,null).getPropertyValue("height")),
 		_viewH = document.documentElement.clientHeight,
 		_step = parseInt(_height/_viewH) - 1,
 		_cur = 0,
