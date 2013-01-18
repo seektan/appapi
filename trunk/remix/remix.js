@@ -16,7 +16,6 @@ function remix(){
 		_item.title = matches[i].querySelectorAll("h3 a")[2].innerHTML;
 		_item.url = matches[i].querySelectorAll("h3 a")[2].getAttribute("href");
 		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
-		_item.bphoto = matches[i].querySelector(".photo img").getAttribute("src").replace("200x200.jpg",".jpg");
 		_item.price = matches[i].querySelector(".pp_price").innerHTML;
 		_item.offered = matches[i].querySelector(".attribute .total").innerHTML;
 
