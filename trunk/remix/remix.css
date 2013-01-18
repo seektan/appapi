@@ -12,7 +12,7 @@ body{font-size:12px;overflow:hidden;}
 .remix .rphoto{display:block;width:200px;height:200px;box-shadow:0 0 0 2px #fff;}
 .remix .rtitle{width:188px;left:10px;bottom:20px;}
 .remix .rprice{top:20px;left:10px;color:#fc0;}
-.remix .roffered{top:20px;right:10px;}
+.remix .roffered{top:20px;right:10px;white-space:nowrap;}
 .remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;}
 .remix .ritem a:hover .rphoto{box-shadow:0 0 0 2px #f60;}
 .remix .rprev,
