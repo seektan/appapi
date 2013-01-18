@@ -15,7 +15,7 @@ function remix(){
 	for(var i=0, len=matches.length; i<len; i++){
 		var _item={};
 		
-		_item.link = matches[i].querySelectorAll("h3 a")[2] || matches[i].querySelectorAll("h3 a")[0];		
+		_item.link = matches[i].querySelectorAll("h3 a").length>1 ? matches[i].querySelectorAll("h3 a")[2] : matches[i].querySelectorAll("h3 a")[0];		
 		_item.title = _item.link.innerHTML;
 		_item.url = _item.link.getAttribute("href");
 		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
@@ -46,8 +46,8 @@ function remix(){
 		_viewH = document.documentElement.clientHeight,
 		_step = parseInt(_height/_viewH) - 1,
 		_cur = 0,
-		_prev = _node.querySelector(".rprev"),
-		_next = _node.querySelector(".rnext");
+		_prev = document.querySelector(".remix .rprev"),
+		_next = document.querySelector(".remix .rnext");
 
 
 
