@@ -16,11 +16,11 @@ function remix(){
 		var _item={};
 		
 		_item.link = matches[i].querySelectorAll("h3 a")[2] || matches[i].querySelectorAll("h3 a")[0];		
-		_item.title = _item.link.innerHTML;
+		_item.title = _item.link.innerText;
 		_item.url = _item.link.getAttribute("href");
 		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
-		_item.price = matches[i].querySelector(".pp_price").innerHTML;
-		_item.offered = matches[i].querySelector(".attribute .total") ? matches[i].querySelector(".attribute .total").innerHTML : "暂无数据";
+		_item.price = matches[i].querySelector(".pp_price").innerText;
+		_item.offered = matches[i].querySelector(".attribute .total") ? matches[i].querySelector(".attribute .total").innerText : "暂无数据";
 
 		data.push(_item);
 	}
