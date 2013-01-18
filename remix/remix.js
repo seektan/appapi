@@ -47,6 +47,11 @@ function remix(){
 		_prev = _node.querySelector(".rprev"),
 		_next = _node.querySelector(".rnext");
 
+consolse.log(_height);
+consolse.log(_viewH);
+consolse.log(_step);
+
+
 	function _page(f){
 		if(f){
 			_cur += 1;
@@ -61,6 +66,8 @@ function remix(){
 		}
 		_rlist.style.top = "-" + (_viewH * _cur) + "px";
 	}
+
+consolse.log(_cur);
 
 	if(_step > 0){
 		_prev.onclick = function(){ _page(0);}
