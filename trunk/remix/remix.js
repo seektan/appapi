@@ -20,7 +20,7 @@ function remix(){
 		_item.url = _item.link.getAttribute("href");
 		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
 		_item.price = matches[i].querySelector(".pp_price").innerHTML;
-		_item.offered = matches[i].querySelector(".attribute .total").innerHTML || "";
+		_item.offered = matches[i].querySelector(".attribute .total") ? matches[i].querySelector(".attribute .total").innerHTML : "ÔÝÎÞÊý¾Ý";
 
 		data.push(_item);
 	}
