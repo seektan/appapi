@@ -40,16 +40,13 @@ function remix(){
 
 
 	var _rlist = _node.querySelector(".rlist"),
-		_height = _rlist.offsetHeight,
+		_height = window.getComputedStyle(_rlist,null).getPropertyValue("height"),
 		_viewH = document.documentElement.clientHeight,
 		_step = parseInt(_height/_viewH) - 1,
 		_cur = 0,
 		_prev = _node.querySelector(".rprev"),
 		_next = _node.querySelector(".rnext");
 
-console.log(_height);
-console.log(_viewH);
-console.log(_step);
 
 
 	function _page(f){
@@ -67,7 +64,6 @@ console.log(_step);
 		_rlist.style.top = "-" + (_viewH * _cur) + "px";
 	}
 
-console.log(_cur);
 
 	if(_step > 0){
 		_prev.onclick = function(){ _page(0);}
