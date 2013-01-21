@@ -7,6 +7,7 @@ function remix(){
 		cssLink.type = 'text/css';
 		cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
 	document.getElementsByTagName('head')[0].appendChild(cssLink);
+	document.getElementsByTagName('html')[0].className = "remixWrap";
 
 	var matches = document.querySelectorAll(".item-show"),
 		data = [],
@@ -29,8 +30,9 @@ function remix(){
 		htmlStr += '<li class="ritem"><a href="' + data[i].url + '" target="_blank"><img src="' + data[i].photo + '" alt="' + data[i].title + '" class="rphoto" /><span class="rtitle">' + data[i].title + '</span><span class="rprice">' + data[i].price + '</span><span class="roffered">' + data[i].offered + '</span></a></li>';
 	}
 
-	htmlStr += '</ul><i class="rprev"></i><i class="rnext"></i>';
+	htmlStr += '</ul><i class="rprev"></i><i class="rnext"></i><i class="rclose"></i>';
 	
+
 	if(document.querySelector(".remix")){
 		document.querySelector(".remix").innerHTML = htmlStr;
 	}else{
@@ -44,10 +46,11 @@ function remix(){
 	var _rlist = document.querySelector(".remix .rlist"),
 		_height = _rlist.offsetHeight,
 		_viewH = document.documentElement.clientHeight,
-		_step = parseInt(_height/_viewH) - 1,
+		_step = parseInt(_height/_viewH),
 		_cur = 0,
 		_prev = document.querySelector(".remix .rprev"),
-		_next = document.querySelector(".remix .rnext");
+		_next = document.querySelector(".remix .rnext"),
+		_close = document.querySelector(".remix .rclose");
 
 
 
@@ -65,10 +68,15 @@ function remix(){
 		}
 		_rlist.style.top = "-" + (_viewH * _cur) + "px";
 	}
-
-
+	
 	if(_step > 0){
 		_prev.onclick = function(){ _page(0);}
 		_next.onclick = function(){ _page(1);}
 	}
+
+	_close.onclick = function (){
+		document.getElementsByTagName('html')[0].className = "";
+		document.body.removeChild(_node);
+	}	
+	
 }
