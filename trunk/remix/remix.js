@@ -76,7 +76,7 @@ function remix(){
 
 	_close.onclick = function (){
 		document.getElementsByTagName('html')[0].className = "";
-		document.body.removeChild(_node);
+		document.body.removeChild(document.querySelector(".remix"));
 	}	
 	
 }
