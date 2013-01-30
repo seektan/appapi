@@ -80,6 +80,7 @@ if(!document.getElementById("remixCss")){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;";
 		data[i].org.style.cssText = "opacity:0;";
+      console.log(data[i].org)
 	}
 
 	htmlStr += '</ul>';
