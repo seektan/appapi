@@ -41,7 +41,7 @@ function remix(){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 2s;";
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top 1s ease-out, opacity 1s;";
     data[i].org.style.cssText = "opacity:0;";
 	}
 
