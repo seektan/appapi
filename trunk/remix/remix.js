@@ -7,14 +7,6 @@ function remix(){
 			remixCss.id = 'remixStyle';
 
 		var styles = "body,html{height:100%;} \
-			.remix:-webkit-scrollbar{width:12px;height:12px} \
-			.remix:-webkit-scrollbar-button:vertical{display:none} \
-			.remix:-webkit-scrollbar-track:vertical{background-color:black} \
-			.remix:-webkit-scrollbar-track-piece{background:#FFF} \
-			.remix:-webkit-scrollbar-thumb:vertical{background-color:#8E8E8E;border-radius:5px} \
-			.remix:-webkit-scrollbar-thumb:vertical:hover{background-color:#3B3B3B} \
-			.remix:-webkit-scrollbar-corner:vertical{background-color:#535353} \
-			.remix:-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
 			.copycat{position:absolute;opacity:1;-webkit-transition:top 1s ease-out, opacity 1s;} \
