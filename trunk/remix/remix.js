@@ -5,7 +5,7 @@ function remix(){
 		cssLink.rel  = 'stylesheet';
 		cssLink.type = 'text/css';
 		cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
-	  document.getElementsByTagName('head')[0].appendChild(cssLink);
+	document.getElementsByTagName('head')[0].appendChild(cssLink);
 
 	var imgs = document.getElementsByTagName("img"),
 		data = [],
@@ -41,7 +41,7 @@ function remix(){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 1s;";
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + Math.random()*10 + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
