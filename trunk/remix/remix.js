@@ -1,15 +1,6 @@
 remix();
 function remix(){
 
-	/*if(!document.getElementById("remixCss")){
-		var cssLink = document.createElement('link');
-			cssLink.rel  = 'stylesheet';
-			cssLink.type = 'text/css';
-			cssLink.id = 'remixCss';
-			cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
-		document.getElementsByTagName('head')[0].appendChild(cssLink);
-	}*/
-
 if(!document.getElementById("remixCss")){
 	var remixCss = document.createElement('style');
 		remixCss.type = 'text/css';
@@ -69,6 +60,7 @@ if(!document.getElementById("remixCss")){
 			_item.copycat = imgs[i].cloneNode(true);
 			_item.copycat.className = "copycat";
 			_item.copycat.style.top = imgs[i].offsetTop + "px";
+			_item.copycat.style.left = imgs[i].offsetLeft + "px";
 
 			document.body.appendChild(_item.copycat);
 
