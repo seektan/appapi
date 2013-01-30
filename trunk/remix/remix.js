@@ -38,9 +38,10 @@ if(!document.getElementById("remixCss")){
 	}else{
 		remixCss.appendChild(document.createTextNode(styles));
 	}
+   
+  document.getElementsByTagName("head")[0].appendChild(remixCss);
 }
 
-document.getElementsByTagName("head")[0].appendChild(css);
 
 
 	var imgs = document.getElementsByTagName("img"),
