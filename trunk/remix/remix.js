@@ -41,8 +41,8 @@ function remix(){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 1s;";
-    setTimeout(function(){data[i].org.style.cssText = "opacity:0;"},100);
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 2s;";
+    data[i].org.style.cssText = "opacity:0;";
 	}
 
 	htmlStr += '</ul>';
@@ -57,6 +57,6 @@ function remix(){
 		_node.innerHTML = htmlStr;
 		document.body.appendChild(_node);
 	}
-	setTimeout(function(){document.getElementsByTagName('html')[0].className = "remixWrap";},1000);
+	setTimeout(function(){document.getElementsByTagName('html')[0].className = "remixWrap"},500);
 	
 }
