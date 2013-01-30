@@ -60,7 +60,6 @@ if(!document.getElementById("remixStyle")){
 			_item.copycat = imgs[i].cloneNode(true);
 			_item.copycat.className = "copycat";
 			_item.copycat.style.top = imgs[i].offsetTop + "px";
-			_item.copycat.style.left = imgs[i].offsetLeft + "px";
 
 			document.body.appendChild(_item.copycat);
 
@@ -70,7 +69,7 @@ if(!document.getElementById("remixStyle")){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 1s;";
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
