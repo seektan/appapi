@@ -105,5 +105,6 @@ function findPos(obj){
 			curleft += obj.offsetLeft;
 			curtop += obj.offsetTop;
 		} while (obj = obj.offsetParent);
-	return [curleft,curtop];
+		return [curleft,curtop];
+	}
 }
