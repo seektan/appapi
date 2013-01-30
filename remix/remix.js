@@ -1,82 +1,62 @@
 remix();
-window.onresize = remix;
 function remix(){
 
 	var cssLink = document.createElement('link');
 		cssLink.rel  = 'stylesheet';
 		cssLink.type = 'text/css';
 		cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
-	document.getElementsByTagName('head')[0].appendChild(cssLink);
-	document.getElementsByTagName('html')[0].className = "remixWrap";
+	//document.getElementsByTagName('head')[0].appendChild(cssLink);
 
-	var matches = document.querySelectorAll(".item-show"),
+	var imgs = document.getElementsByTagName("img"),
 		data = [],
-		htmlStr = '<ul class="rlist">';
+		htmlStr = '<ul class="rlist">',
+		ch = document.documentElement.clientHeight,
+		cw = document.documentElement.clientWidth,
+		posx = cw/2 - 100,
+		posy = ch;
 
-	for(var i=0, len=matches.length; i<len; i++){
-		var _item={};
-		
-		_item.link = matches[i].querySelectorAll("h3 a")[2] || matches[i].querySelectorAll("h3 a")[0];		
-		_item.title = _item.link.innerText;
-		_item.url = _item.link.getAttribute("href");
-		_item.photo = matches[i].querySelector(".photo img").getAttribute("src") || matches[i].querySelector(".photo img").getAttribute("init_src");
-		_item.price = matches[i].querySelector(".pp_price").innerText;
-		_item.offered = matches[i].querySelector(".attribute .total") ? matches[i].querySelector(".attribute .total").innerText : "ÔÝÎÞÊý¾Ý";
+	for(var i=0, len=imgs.length; i<len; i++){
+		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src"),
+			_item={};
 
-		data.push(_item);
+		if(!_ourl) return;
+
+		var _idPatt = /-([0-9a-zA-Z]{32})\./,
+			_id = _idPatt.exec(_ourl);		
+
+		if(_id){
+			_item.id = _id[1];
+			_item.photo = _ourl;
+
+			_item.org = imgs[i];
+			_item.copycat = imgs[i].cloneNode(true);
+			_item.copycat.className = "copycat";
+			_item.copycat.style.top = imgs[i].offsetTop + "px";
+
+			document.body.appendChild(_item.copycat);
+
+			data.push(_item);
+		}
 	}
 
-	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem"><a href="' + data[i].url + '" target="_blank"><img src="' + data[i].photo + '" alt="' + data[i].title + '" class="rphoto" /><span class="rtitle">' + data[i].title + '</span><span class="rprice">' + data[i].price + '</span><span class="roffered">' + data[i].offered + '</span></a></li>';
+	for(var i=0, len=data.length; i<len; i++){console.log(data[i].copycat)
+		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + Math.random()*10 + "s ease-out, opacity 1s;";
+		data[i].org.style.cssText = "opacity:0;";
 	}
 
-	htmlStr += '</ul><i class="rprev"></i><i class="rnext"></i><i class="rclose"></i>';
+	htmlStr += '</ul>';
 	
 
-	if(document.querySelector(".remix")){
-		document.querySelector(".remix").innerHTML = htmlStr;
+	if(document.getElementById("remix")){
+		document.getElementById("remix").innerHTML = htmlStr;
 	}else{
 		var _node = document.createElement("div");
 		_node.className = "remix";
+		_node.id = "remix";
 		_node.innerHTML = htmlStr;
 		document.body.appendChild(_node);
 	}
-
-
-	var _rlist = document.querySelector(".remix .rlist"),
-		_height = _rlist.offsetHeight,
-		_viewH = document.documentElement.clientHeight,
-		_step = parseInt(_height/_viewH),
-		_cur = 0,
-		_prev = document.querySelector(".remix .rprev"),
-		_next = document.querySelector(".remix .rnext"),
-		_close = document.querySelector(".remix .rclose");
-
-
-
-	function _page(f){
-		if(f){
-			_cur += 1;
-			if(_cur > _step){
-				_cur = 0;
-			}
-		}else{
-			_cur -= 1;	
-			if(_cur < 0){
-				_cur = _step;
-			}
-		}
-		_rlist.style.top = "-" + (_viewH * _cur) + "px";
-	}
-	
-	if(_step > 0){
-		_prev.onclick = function(){ _page(0);}
-		_next.onclick = function(){ _page(1);}
-	}
-
-	_close.onclick = function (){
-		document.getElementsByTagName('html')[0].className = "";
-		document.body.removeChild(document.querySelector(".remix"));
-	}	
+	setTimeout(function(){document.getElementsByTagName('html')[0].className = "remixWrap";},1000);
 	
 }
