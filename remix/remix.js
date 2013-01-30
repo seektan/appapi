@@ -16,7 +16,7 @@ function remix(){
 			.remix::-webkit-scrollbar-corner:vertical{background-color:#535353} \
 			.remix::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
 			@-webkit-keyframes tumbleIn { \
-				from {-webkit-transform-origin: 0% 100%;-webkit-transform: rotateZ(180deg);} \
+				from {-webkit-transform-origin: 0% 100%;-webkit-transform: rotateX(180deg);} \
 				to{-webkit-transform-origin: 0% 100%;} \
 			} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
