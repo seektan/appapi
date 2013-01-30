@@ -77,7 +77,7 @@ function remix(){
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
-	htmlStr += '</ul><i class="rclose"></i>';
+	htmlStr += '</ul><i class="rclose" id="rclose"></i>';
 	
 
 	if(document.getElementById("remix")){
