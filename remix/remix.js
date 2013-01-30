@@ -78,7 +78,7 @@ if(!document.getElementById("remixCss")){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + findPos(data[i].org)[0] + "px;";
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
@@ -96,15 +96,4 @@ if(!document.getElementById("remixCss")){
 	}
 	setTimeout(function(){document.getElementsByTagName('html')[0].className = "remixWrap";},1000);
 	
-}
-
-function findPos(obj){
-	var curleft = curtop = 0;
-	if (obj.offsetParent){
-		do {
-			curleft += obj.offsetLeft;
-			curtop += obj.offsetTop;
-		} while (obj = obj.offsetParent);
-		return [curleft,curtop];
-	}
 }
