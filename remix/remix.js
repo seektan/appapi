@@ -15,17 +15,8 @@ function remix(){
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
-			.remix .ritem img{-webkit-animation:fly 1s 1s;} \
-			@-webkit-keyframes fly{ \
-				20%,40%,60%,80%,100%{-webkit-transform-origin:top center} \
-				20%{-webkit-transform:rotate(5deg)} \
-				40%{-webkit-transform:rotate(-3deg)} \
-				60%{-webkit-transform:rotate(3deg)} \
-				80%{-webkit-transform:rotate(-2deg)} \
-				100%{-webkit-transform:rotate(0deg)}
-			} \
 			.remix .ritem a{color:#fff;text-align:left;} \
-			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
+			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;} \
 			.remix .rphoto{display:block;width:200px;height:200px;box-shadow:0 0 0 2px #fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .rprice{top:20px;left:10px;color:#fc0;} \
@@ -82,7 +73,7 @@ function remix(){
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly '+Math.random()+'s '+Math.random()/2+'s;" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getOffsetPosition(data[i].org).left + "px; -webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getOffsetPosition(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
