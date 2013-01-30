@@ -92,21 +92,10 @@ if(!document.getElementById("remixStyle")){
 
 function getOffsetPosition(elem){     
     var top = 0, left = 0;
-    if ( "getBoundingClientRect" in document.documentElement ){   
-        var box = elem.getBoundingClientRect(),    
-        doc = elem.ownerDocument,    
-        body = doc.body,    
-        docElem = doc.documentElement,   
-        clientTop = docElem.clientTop || body.clientTop || 0,    
-        clientLeft = docElem.clientLeft || body.clientLeft || 0,   
-        top  = box.top  + (self.pageYOffset || docElem && docElem.scrollTop  || body.scrollTop ) - clientTop,   
-        left = box.left + (self.pageXOffset || docElem && docElem.scrollLeft || body.scrollLeft) - clientLeft;
-}else{   
-        do{   
-            top += elem.offsetTop || 0;
-            left += elem.offsetLeft || 0;
-            elem = elem.offsetParent;
-} while (elem);
-}   
+    do{   
+        top += elem.offsetTop || 0;
+        left += elem.offsetLeft || 0;
+        elem = elem.offsetParent;
+	} while (elem);
   return {left:left, top:top};
 }
