@@ -15,15 +15,18 @@ function remix(){
 			.remix::-webkit-scrollbar-thumb:vertical:hover{background-color:#3B3B3B} \
 			.remix::-webkit-scrollbar-corner:vertical{background-color:#535353} \
 			.remix::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
+			@-webkit-keyframes tumbleIn { \
+				from {-webkit-transform-origin: 0% 100%;-webkit-transform: rotateZ(180deg);} \
+				to{-webkit-transform-origin: 0% 100%;} \
+			} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
 			.copycat{position:absolute;opacity:1;-webkit-transition:top 1s ease-out, opacity 1s;} \
 			.remixWrap body{overflow:hidden;} \
-			.remixWrap .remix{bottom:0;opacity:1;} \
+			.remixWrap .remix{bottom:0;opacity:1;-webkit-animation: tumbleIn 1s linear 0s 1 forwards;} \
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
-			.remix .ritem img{-webkit-animation:fly 1s 1s;} \
 			@-webkit-keyframes fly{ \
 				20%,40%,60%,80%,100%{-webkit-transform-origin:top center} \
 				20%{-webkit-transform:rotate(5deg)} \
