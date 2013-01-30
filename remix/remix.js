@@ -67,7 +67,7 @@ function remix(){
 		posy = ch + document.body.scrollTop;
 
 	for(var i=0, len=imgs.length; i<len; i++){
-		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src"),
+		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src") || imgs[i].getAttribute("back_src"),
 			_item={};
 
 		if(!_ourl) return;
