@@ -90,6 +90,8 @@ function remix(){
 			data.push(_item);
 		}
 	}
+	
+	if(data.length<1) return;
 
 	for(var i=0, len=data.length; i<len; i++){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly '+Math.random()*4+'s '+Math.random()+'s;" /></a></li>';
