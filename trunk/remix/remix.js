@@ -5,7 +5,7 @@ function remix(){
 		cssLink.rel  = 'stylesheet';
 		cssLink.type = 'text/css';
 		cssLink.href = 'http://appapi.googlecode.com/svn/trunk/remix/remix.css?t='+(+new Date);
-	//document.getElementsByTagName('head')[0].appendChild(cssLink);
+	  document.getElementsByTagName('head')[0].appendChild(cssLink);
 
 	var imgs = document.getElementsByTagName("img"),
 		data = [],
