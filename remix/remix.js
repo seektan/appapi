@@ -99,21 +99,23 @@ function remix(){
 
 	htmlStr += '</ul><i class="rclose" id="rclose"></i>';
 	
-
+	
 	if(document.getElementById("remix")){
-		document.getElementById("remix").innerHTML = htmlStr;
-	}else{
-		var _node = document.createElement("div");
-		_node.className = "remix";
-		_node.id = "remix";
-		_node.innerHTML = htmlStr;
-		document.body.appendChild(_node);
+		removeMix();
 	}
+	var _node = document.createElement("div");
+	_node.className = "remix";
+	_node.id = "remix";
+	_node.innerHTML = htmlStr;
+	document.body.appendChild(_node);
+
 	setTimeout(function(){document.getElementsByTagName('html')[0].className += " remixWrap";},1000);
 
 	var _close = document.getElementById("rclose");
 
-	_close.onclick = function (){
+	_close.onclick = removeMix;
+	
+	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
 		document.body.removeChild(_node);
 		for(var i=0, len=data.length; i<len; i++){
