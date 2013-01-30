@@ -101,14 +101,14 @@ function remix(){
 	
 	
 	if(document.getElementById("remix")){
-		removeMix();
+		document.getElementById("remix").innerHTML = htmlStr;
+	}else{
+		var _node = document.createElement("div");
+		_node.className = "remix";
+		_node.id = "remix";
+		_node.innerHTML = htmlStr;
+		document.body.appendChild(_node);
 	}
-	var _node = document.createElement("div");
-	_node.className = "remix";
-	_node.id = "remix";
-	_node.innerHTML = htmlStr;
-	document.body.appendChild(_node);
-
 	setTimeout(function(){document.getElementsByTagName('html')[0].className += " remixWrap";},1000);
 
 	var _close = document.getElementById("rclose");
@@ -118,11 +118,14 @@ function remix(){
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
 		document.body.removeChild(_node);
+		cleaImg()
+	}	
+	function cleaImg(){
 		for(var i=0, len=data.length; i<len; i++){
 			data[i].org.style.cssText = "opacity:1;";
 			document.body.removeChild(data[i].copycat);
 		}
-	}	
+	}
 	
 }
 
