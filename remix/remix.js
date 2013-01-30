@@ -96,6 +96,10 @@ function remix(){
 	_close.onclick = function (){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
 		document.body.removeChild(_node);
+		for(var i=0, len=data.length; i<len; i++){
+			data[i].org.style.cssText = "opacity:1;";
+			document.body.removeChild(data[i].copycat);
+		}
 	}	
 	
 }
