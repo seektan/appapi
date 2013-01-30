@@ -14,6 +14,8 @@ function remix(){
 		cw = document.documentElement.clientWidth,
 		posx = cw/2 - 100,
 		posy = ch;
+      
+  console.log(new Date())
 
 	for(var i=0, len=imgs.length; i<len; i++){
 		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src"),
@@ -36,6 +38,7 @@ function remix(){
 			document.body.appendChild(_item.copycat);
 
 			data.push(_item);
+      console.log(new Date() + "---" + _item.id)
 		}
 	}
 
@@ -43,6 +46,7 @@ function remix(){
 		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + data[i].org.offsetLeft + "px;-webkit-transition:top " + parseInt(Math.random()*10) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
+    console.log(new Date() + "---" + data[i].id)
 	}
 
 	htmlStr += '</ul>';
