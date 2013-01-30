@@ -7,6 +7,14 @@ function remix(){
 			remixCss.id = 'remixStyle';
 
 		var styles = "body,html{height:100%;} \
+			.remix::-webkit-scrollbar{width:12px;height:12px} \
+			.remix::-webkit-scrollbar-button:vertical{display:none} \
+			.remix::-webkit-scrollbar-track:vertical{background-color:black} \
+			.remix::-webkit-scrollbar-track-piece{background:#FFF} \
+			.remix::-webkit-scrollbar-thumb:vertical{background-color:#8E8E8E;border-radius:5px} \
+			.remix::-webkit-scrollbar-thumb:vertical:hover{background-color:#3B3B3B} \
+			.remix::-webkit-scrollbar-corner:vertical{background-color:#535353} \
+			.remix::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
 			.copycat{position:absolute;opacity:1;-webkit-transition:top 1s ease-out, opacity 1s;} \
@@ -15,8 +23,17 @@ function remix(){
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
+			.remix .ritem img{-webkit-animation:fly 1s 1s;} \
+			@-webkit-keyframes fly{ \
+				20%,40%,60%,80%,100%{-webkit-transform-origin:top center} \
+				20%{-webkit-transform:rotate(5deg)} \
+				40%{-webkit-transform:rotate(-3deg)} \
+				60%{-webkit-transform:rotate(3deg)} \
+				80%{-webkit-transform:rotate(-2deg)} \
+				100%{-webkit-transform:rotate(0deg)} \
+			} \
 			.remix .ritem a{color:#fff;text-align:left;} \
-			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;} \
+			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{display:block;width:200px;height:200px;box-shadow:0 0 0 2px #fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .rprice{top:20px;left:10px;color:#fc0;} \
