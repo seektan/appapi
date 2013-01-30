@@ -64,7 +64,7 @@ function remix(){
 		ch = document.documentElement.clientHeight,
 		cw = document.documentElement.clientWidth,
 		posx = cw/2 - 100,
-		posy = ch;
+		posy = ch + document.body.scrollTop;
 
 	for(var i=0, len=imgs.length; i<len; i++){
 		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src"),
