@@ -92,7 +92,7 @@ function remix(){
 	}
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly '+Math.random()+'s '+Math.random()/2+'s;" /></a></li>';
+		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="http://img0.paipaiimg.com/a67ddff1/item-50EAE6DE-' + data[i].id + '.0.200x200.jpg" class="rphoto" style="-webkit-animation:fly '+Math.random()*4+'s '+Math.random()+'s;" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getOffsetPosition(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
