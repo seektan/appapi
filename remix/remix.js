@@ -17,7 +17,7 @@ function remix(){
 			.remix::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
 			@-webkit-keyframes tumbleIn { \
 				40% {bottom:-20%;} \
-				80{bottom:5%;} \
+				80{bottom:40%;} \
 			} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
