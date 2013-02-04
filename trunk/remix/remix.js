@@ -134,10 +134,11 @@ function remix(){
 		}
 		clearNode("tempImgs");
 	}
-	function clearNode(id){		
-		if(document.getElementById(id) document.body.removeChild(document.getElementById(id));
-	}
 	
+}
+
+function clearNode(id){		
+	if(document.getElementById(id) document.body.removeChild(document.getElementById(id));
 }
 
 function getXY(elem){
