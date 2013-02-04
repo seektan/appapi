@@ -29,10 +29,10 @@ function remix(){
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
 			.remix .ritem img{position:absolute;top:10px;left:10px;} \
 			@-webkit-keyframes fly{ \
-			20%{top:-4px;} \
-			40%{top:0px;} \
-			60%{top:-8px;} \
-			80%{top:2px;} \
+				20%{top:-4px;} \
+				40%{top:0px;} \
+				60%{top:-8px;} \
+				80%{top:2px;} \
 			} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
@@ -60,16 +60,18 @@ function remix(){
 	var imgs = document.getElementsByTagName("img"),
 		data = [],
 		htmlStr = '<ul class="rlist">',
+		tis = document.createElement("div"),
 		ch = document.documentElement.clientHeight,
 		cw = document.documentElement.clientWidth,
 		posx = cw/2 - 100,
-		posy = ch + document.body.scrollTop;
+		posy = ch + document.body.scrollTop;	
+		tis.id = "tempImgs";
 
 	for(var i=0, len=imgs.length; i<len; i++){
 		var _ourl = imgs[i].getAttribute("src") || imgs[i].getAttribute("init_src") || imgs[i].getAttribute("back_src"),
 			_item={};
 
-		if(!_ourl) return;
+		if(!_ourl || _ourl.length < 1) return;
 
 		var _idPatt = /-([0-9a-zA-Z]{32})\./,
 			_id = _idPatt.exec(_ourl);		
@@ -81,20 +83,23 @@ function remix(){
 			_item.org = imgs[i];
 			_item.copycat = imgs[i].cloneNode(true);
 			_item.copycat.className = "copycat";
-			_item.copycat.style.top = getOffsetPosition(imgs[i]).top + "px";
-			_item.copycat.style.left = getOffsetPosition(imgs[i]).left + "px";
+			_item.copycat.style.top = getXY(imgs[i]).top + "px";
+			_item.copycat.style.left = getXY(imgs[i]).left + "px";
+			_item.link = getImgLink(imgs[i]) ? getImgLink(imgs[i]) : ("http://auction1.paipai.com/"+_item.id);
 
-			document.body.appendChild(_item.copycat);
+			tis.appendChild(_item.copycat);
 
 			data.push(_item);
 		}
 	}
 	
 	if(data.length<1) return;
+	
+	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem"><a href="http://auction1.paipai.com/' + data[i].id + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly 1.5s '+Math.random()+'s;" /></a></li>';
-		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getOffsetPosition(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
+		htmlStr += '<li class="ritem"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly 1.5s '+Math.random()+'s;" /></a></li>';
+		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
 
@@ -118,7 +123,7 @@ function remix(){
 	
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
-		document.body.removeChild(_node);
+		if(_node) document.body.removeChild(_node);
 		cleaImg()
 	}	
 	function cleaImg(){
@@ -126,11 +131,12 @@ function remix(){
 			data[i].org.style.cssText = "opacity:1;";
 			document.body.removeChild(data[i].copycat);
 		}
+		if(tis) document.body.removeChild(tis);
 	}
 	
 }
 
-function getOffsetPosition(elem){     
+function getXY(elem){
     var top = 0, left = 0;
     do{   
         top += elem.offsetTop || 0;
@@ -138,4 +144,13 @@ function getOffsetPosition(elem){
         elem = elem.offsetParent;
 	} while (elem);
   return {left:left, top:top};
+}
+
+function getImgLink(elem){
+	var _pl = elem.parentNode;
+	if(_pl.nodeName=="A" && _pl.href.length>1){
+		return _pl.href;
+	}else{
+		return false;
+	}
 }
