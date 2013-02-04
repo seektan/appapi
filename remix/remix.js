@@ -123,14 +123,14 @@ function remix(){
 	
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
-		if(_node) document.body.removeChild(_node);
+		if(document.getElementById("remix")) document.body.removeChild(document.getElementById("remix"));
 		cleaImg()
 	}	
 	function cleaImg(){
 		for(var i=0, len=data.length; i<len; i++){
 			data[i].org.style.cssText = "opacity:1;";
 		}
-		if(tis) document.body.removeChild(tis);
+		if(document.getElementById("tempImgs")) document.body.removeChild(document.getElementById("tempImgs"));
 	}
 	
 }
