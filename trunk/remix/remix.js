@@ -138,7 +138,7 @@ function remix(){
 }
 
 function clearNode(id){		
-	if(document.getElementById(id) document.body.removeChild(document.getElementById(id));
+	if(document.getElementById(id)) document.body.removeChild(document.getElementById(id));
 }
 
 function getXY(elem){
