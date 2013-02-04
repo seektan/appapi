@@ -1,6 +1,6 @@
 remix();
 function remix(){
-
+	
 	if(!document.getElementById("remixStyle")){
 		var remixCss = document.createElement('style');
 			remixCss.type = 'text/css';
@@ -55,7 +55,9 @@ function remix(){
 	   
 	  document.getElementsByTagName("head")[0].appendChild(remixCss);
 	}
-
+	
+	clearNode("remix");
+	clearNode("tempImgs");
 
 	var imgs = document.getElementsByTagName("img"),
 		data = [],
@@ -123,14 +125,17 @@ function remix(){
 	
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
-		if(document.getElementById("remix")) document.body.removeChild(document.getElementById("remix"));
+		clearNode("remix");
 		cleaImg()
 	}	
 	function cleaImg(){
 		for(var i=0, len=data.length; i<len; i++){
 			data[i].org.style.cssText = "opacity:1;";
 		}
-		if(document.getElementById("tempImgs")) document.body.removeChild(document.getElementById("tempImgs"));
+		clearNode("tempImgs");
+	}
+	function clearNode(id){		
+		if(document.getElementById(id) document.body.removeChild(document.getElementById(id));
 	}
 	
 }
