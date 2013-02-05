@@ -24,7 +24,7 @@ function remix(){
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
 			.copycat{position:absolute;opacity:1;-webkit-transition:top 1s ease-out, opacity 1s;} \
-			.remixWrap body{overflow:hidden;} \
+			.remixWrap,.remixWrap body{overflow:hidden;} \
 			.remixWrap .remix{bottom:0;opacity:1;-webkit-animation: bounceUp 0.3s linear 0.1s 1 alternate;} \
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
@@ -40,6 +40,7 @@ function remix(){
 			.remix .rclose{position:fixed;top:10px;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
 			.remix .rclose:after{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(45deg);} \
 			.remix .rclose:before{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(-45deg);} \
+			.remix .ritem .rprice{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;top:20px;left:10px;color:#fc0;} \
 			.remix:hover .rclose{display:block;}";
 
 		if (remixCss.styleSheet){
@@ -83,6 +84,7 @@ function remix(){
 			_item.copycat.style.top = getXY(imgs[i]).top + "px";
 			_item.copycat.style.left = getXY(imgs[i]).left + "px";
 			_item.link = getImgLink(imgs[i]) ? getImgLink(imgs[i]) : ("http://auction1.paipai.com/"+_item.id);
+			_item.price = getPrice(imgs[i]);
 
 			tis.appendChild(_item.copycat);
 
@@ -95,7 +97,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /></a></li>';
+		htmlStr += '<li class="ritem"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" />'+showPrice(data[i].price)+'</a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
@@ -129,6 +131,29 @@ function remix(){
 		}
 		clearNode("tempImgs");
 	}
+	function getImgLink(elem){
+		var _pl = elem.parentNode;
+		if(_pl.nodeName=="A" && _pl.href.length>1){
+			return _pl.href;
+		}else{
+			return false;
+		}
+	}
+	function getPrice(elem){
+		var _pl = elem.parentNode.parentNode.parentNode.querySelector(".pp_price") || elem.parentNode.parentNode.parentNode.querySelector(".price");
+		if(_pl && _pl.innerText.length>0){
+			return _pl.innerText;
+		}else{
+			return 0;
+		}
+	}
+	function showPrice(t){
+		if(t){
+			return '<span class="rprice">' + t + '</span>';
+		}else{
+			return '';
+		}
+	}
 	
 }
 
@@ -144,13 +169,4 @@ function getXY(elem){
         elem = elem.offsetParent;
 	} while (elem);
   return {left:left, top:top};
-}
-
-function getImgLink(elem){
-	var _pl = elem.parentNode;
-	if(_pl.nodeName=="A" && _pl.href.length>1){
-		return _pl.href;
-	}else{
-		return false;
-	}
 }
