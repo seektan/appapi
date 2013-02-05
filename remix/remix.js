@@ -163,17 +163,17 @@ function clearNode(id){
 }
 
 function remixiEnlarge(d){		
-	_remixTmp = d.cloneNode(true);
+	/* _remixTmp = d.cloneNode(true);
 	_remixTmp.className = "ritem ritem_focus";
 	
 	var _ti = _remixTmp.getElementsByTagName("img")[0];
 	if(_ti.src.indexOf(".200x200.jpg")){
 		_ti.src = _ti.src.replace(".200x200.jpg",".jpg");
 	}
-	document.querySelector("#rtemp").appendChild(_remixTmp);
+	document.querySelector("#rtemp").appendChild(_remixTmp); */
 }
 function remixiNormal(d){		
-	document.querySelector("#rtemp").innerHTML = "";
+	/* document.querySelector("#rtemp").innerHTML = ""; */
 }
 
 function getXY(elem){
