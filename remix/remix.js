@@ -28,7 +28,7 @@ function remix(){
 			.remixWrap .remix{bottom:0;opacity:1;-webkit-animation: bounceUp 0.3s linear 0.1s 1 alternate;} \
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
-			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
+			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;overflow:hidden;} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{box-shadow:0 0 0 2px #fff;} \
@@ -164,6 +164,7 @@ function clearNode(id){
 function remixiEnlarge(d){		
 	var _ti = d.getElementsByTagName("img")[0];
 	d.style.zIndex = "2";
+	d.style.overflow = "visible";
 	
 	if(_ti.src.indexOf(".200x200.jpg")){
 		_ti.src = _ti.src.replace(".200x200.jpg",".jpg");
@@ -173,6 +174,7 @@ function remixiNormal(d){
 	var _ti = d.getElementsByTagName("img")[0],
 		_tid = d.getAttribute("iid");
 	d.style.zIndex = "1";
+	d.style.overflow = "hidden";
 	
 	if(_tid && _ti.src.indexOf(_tid+".0.jpg")){
 		_ti.src = _ti.src.replace(_tid+".0.jpg",_tid+".0.200x200.jpg");
