@@ -41,7 +41,7 @@ function remix(){
 			.remix .rclose:after{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(45deg);} \
 			.remix .rclose:before{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(-45deg);} \
 			.remix .ritem .rprice{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;top:20px;left:10px;color:#fc0;} \
-			.ritem_focus{overflow:visible;z-index:2;position:absolute;top:0;left:0;}
+			.ritem_focus{overflow:visible;z-index:2;position:absolute;top:0;left:0;} \
 			.remix:hover .rclose{display:block;}";
 
 		if (remixCss.styleSheet){
