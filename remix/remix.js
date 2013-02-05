@@ -171,7 +171,7 @@ function remixiEnlarge(d){
 }
 function remixiNormal(d){		
 	var _ti = d.getElementsByTagName("img")[0],
-		_tid = d.iid;
+		_tid = d.getAttribute("iid");
 	d.style.zIndex = "1";
 	
 	if(_tid && _ti.src.indexOf(_tid+".0.jpg")){
