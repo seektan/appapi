@@ -37,7 +37,7 @@ function remix(){
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
 			.remix .ritem a:hover .rphoto{box-shadow:0 0 0 2px #f60;} \
-			.remix .rclose{position:fixed;top:10px;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
+			.remix .rclose{position:fixed;top:10px;z-index:3;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
 			.remix .rclose:after{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(45deg);} \
 			.remix .rclose:before{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(-45deg);} \
 			.remix .ritem .rprice{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;top:20px;left:10px;color:#fc0;} \
