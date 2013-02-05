@@ -31,7 +31,7 @@ function remix(){
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
-			.remix .rphoto{display:block;width:200px;height:200px;box-shadow:0 0 0 2px #fff;} \
+			.remix .rphoto{box-shadow:0 0 0 2px #fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .rprice{top:20px;left:10px;color:#fc0;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
