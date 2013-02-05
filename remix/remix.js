@@ -97,7 +97,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem" onmouseover="remixEnlarge(this)"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" />'+showPrice(data[i].price)+'</a></li>';
+		htmlStr += '<li class="ritem" iid="'+data[i].id+'" onmouseover="remixiEnlarge(this)" onmouseout="remixiNormal(this)"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" />'+showPrice(data[i].price)+'</a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
@@ -161,11 +161,21 @@ function clearNode(id){
 	if(document.getElementById(id)) document.body.removeChild(document.getElementById(id));
 }
 
-function remixEnlarge(d){		
+function remixiEnlarge(d){		
 	var _ti = d.getElementsByTagName("img")[0];
+	d.style.zIndex = "2";
 	
 	if(_ti.src.indexOf(".200x200.jpg")){
 		_ti.src = _ti.src.replace(".200x200.jpg",".jpg");
+	}
+}
+function remixiNormal(d){		
+	var _ti = d.getElementsByTagName("img")[0],
+		_tid = d.iid;
+	d.style.zIndex = "1";
+	
+	if(_tid && _ti.src.indexOf(_tid+".0.jpg")){
+		_ti.src = _ti.src.replace(_tid+".0.jpg",_tid+".0.200x200.jpg");
 	}
 }
 
