@@ -15,25 +15,20 @@ function remix(){
 			.remix::-webkit-scrollbar-thumb:vertical:hover{background-color:#3B3B3B} \
 			.remix::-webkit-scrollbar-corner:vertical{background-color:#535353} \
 			.remix::-webkit-scrollbar-resizer:vertical{background-color:#FF6E00} \
-			@-webkit-keyframes tumbleIn { \
-				70% {bottom:5%;} \
-				90% {bottom:-2%;} \
+			@-webkit-keyframes bounceUp { \
+				20% {-webkit-transform: translateY(-40%);} \
+				30% {-webkit-transform: translateY(5%);} \
+				80% {-webkit-transform: translateY(-5%);} \
+				90% {-webkit-transform: translateY(1%);} \
 			} \
 			#remix{overflow-y:auto;overflow-x:hidden;background:#000;} \
 			#remix li{*display:inline;*zoom:1;} \
 			.copycat{position:absolute;opacity:1;-webkit-transition:top 1s ease-out, opacity 1s;} \
 			.remixWrap body{overflow:hidden;} \
-			.remixWrap .remix{bottom:0;opacity:1;-webkit-animation: tumbleIn 0.3s linear 0.1s 1 alternate;} \
+			.remixWrap .remix{bottom:0;opacity:1;-webkit-animation: bounceUp 0.3s linear 0.1s 1 alternate;} \
 			.remix{position:fixed;z-index:65536;bottom:-100%;left:0;width:100%;height:100%;opacity:0;overflow:hidden;text-align:center;background:rgba(0,0,0,0.8);-webkit-transition:all 0.1s ease-in;} \
 			.remix .rlist{padding:10px 0;} \
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;} \
-			.remix .ritem img{position:absolute;top:10px;left:10px;} \
-			@-webkit-keyframes fly{ \
-				20%{top:-4px;} \
-				40%{top:0px;} \
-				60%{top:-8px;} \
-				80%{top:2px;} \
-			} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{display:block;width:200px;height:200px;box-shadow:0 0 0 2px #fff;} \
@@ -100,7 +95,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:fly 1.5s '+Math.random()+'s;" /></a></li>';
+		htmlStr += '<li class="ritem"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 1.5s '+Math.random()+'s;" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
