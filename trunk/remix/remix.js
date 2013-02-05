@@ -170,7 +170,7 @@ function remixiEnlarge(d){
 	if(_ti.src.indexOf(".200x200.jpg")){
 		_ti.src = _ti.src.replace(".200x200.jpg",".jpg");
 	}
-	document.querySelector("#remix rlist").appendChild(_remixTmp);
+	document.querySelector("#remix .rlist").appendChild(_remixTmp);
 }
 function remixiNormal(d){		
 	var _ti = d.getElementsByTagName("img")[0],
