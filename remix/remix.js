@@ -34,6 +34,7 @@ function remix(){
 			.remix .rphoto{box-shadow:0 0 0 2px #fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .rprice{top:20px;left:10px;color:#fc0;} \
+			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
 			.remix .ritem a:hover .rphoto{box-shadow:0 0 0 10px rgba(256, 128, 0, .8);} \
@@ -98,7 +99,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem" iid="'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" />'+showPrice(data[i].price)+'</a></li>';
+		htmlStr += '<li class="ritem" id="i'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
@@ -123,7 +124,7 @@ function remix(){
 
 	var _rlist = document.querySelectorAll(".remix .ritem")
 	for (var j=0,jlen=_rlist.length; j<jlen; j++){
-		_rlist[j].iid = _rlist[j].getAttribute("iid");
+		_rlist[j].iid = _rlist[j].getAttribute("id").substring(0);
 		_rlist[j].onmouseover = function(){
 			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
 			if(!this.isLoad) appendjs(_ijson);
@@ -150,21 +151,6 @@ function remix(){
 			return false;
 		}
 	}
-	function getPrice(elem){
-		var _pl = elem.parentNode.parentNode.parentNode.querySelector(".pp_price") || elem.parentNode.parentNode.parentNode.querySelector(".price");
-		if(_pl && _pl.innerText.length>0){
-			return _pl.innerText;
-		}else{
-			return 0;
-		}
-	}
-	function showPrice(t){
-		if(t){
-			return '<span class="rprice">' + t + '</span>';
-		}else{
-			return '';
-		}
-	}
 	
 }
 
@@ -183,7 +169,15 @@ function getXY(elem){
 }
 
 function commodityJsonInfoCallBack(){
-	alert(commodityInfo.sItemid);
+	var _iitem = document.getElementById("i" + commodityInfo.sItemid);
+	var _iname = document.createElement("span");
+		_iname.className = "rtitle";
+		_iname.innerHTML = commodityInfo.name;
+	var _iprice = document.createElement("span");
+		_iprice.className = "rprice";
+		_iprice.innerHTML = commodityInfo.price;
+	_iitem.appendChild(_iname);
+	_iitem.appendChild(_iprice);
 }
 
 function appendjs(url){
