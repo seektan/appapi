@@ -32,7 +32,6 @@ function remix(){
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
-			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
 			.remix .rprice{top:10px;left:10px;color:#fc0;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
@@ -41,7 +40,6 @@ function remix(){
 			.remix .rclose{position:fixed;top:10px;z-index:3;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
 			.remix .rclose:after{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(45deg);} \
 			.remix .rclose:before{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(-45deg);} \
-			.remix .ritem .rprice{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.2s;top:20px;left:10px;color:#fc0;} \
 			.remix .ritem_focus{overflow:visible;z-index:2;position:absolute;top:0;left:0;} \
 			.remix:hover .rclose{display:block;}";
 
