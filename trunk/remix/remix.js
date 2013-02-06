@@ -156,8 +156,9 @@ function getXY(elem){
   return {left:left, top:top};
 }
 
-function commodityJsonInfoCallBack(){console.log("data");
+function commodityJsonInfoCallBack(){console.log(commodityInfo.price+"data"+commodityInfo.name);
 	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
+	console.log(_iitem);
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
 		_iname.innerHTML = commodityInfo.name;
