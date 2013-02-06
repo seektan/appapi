@@ -126,6 +126,7 @@ function remix(){
 		_rlist[j].iid = _rlist[j].getAttribute("id").substring(0);
 		_rlist[j].onmouseover = function(){
 			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
+			alert(_ijson);
 			if(!this.isLoad) appendjs(_ijson);
 			this.isLoad = 1;
 		}
