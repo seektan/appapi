@@ -156,7 +156,7 @@ function getXY(elem){
   return {left:left, top:top};
 }
 
-function commodityJsonInfoCallBack(){
+function commodityJsonInfoCallBack(){console.log("data");
 	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
