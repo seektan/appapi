@@ -160,12 +160,13 @@ function commodityJsonInfoCallBack(){
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
 		_iname.innerHTML = commodityInfo.name;
-
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
-
-	document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0].appendChild(_iname).appendChild(_iprice);
+	
+	var imitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0].appendChild(_iname).appendChild(_iprice);
+	imitem.appendChild(_iname);
+	imitem.appendChild(_iprice);
 }
 
 function appendjs(url){
