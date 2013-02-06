@@ -168,7 +168,7 @@ function getXY(elem){
 }
 
 function commodityJsonInfoCallBack(){
-	var _iitem = document.getElementById("i" + commodityInfo.sItemid);
+	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
 		_iname.innerHTML = commodityInfo.name;
