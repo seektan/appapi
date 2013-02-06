@@ -120,6 +120,13 @@ function remix(){
 	var _close = document.getElementById("rclose");
 
 	_close.onclick = removeMix;
+
+	document.querySelectorAll(".remix .ritem").forEach(function(n) {
+		n.onmouseover = function(){
+			var _ijson = "http://auction1.paipai.com/" + n.getAttribute("iid") + ".1";
+			appendjs(_ijson);
+		}
+	});
 	
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
@@ -170,4 +177,15 @@ function getXY(elem){
         elem = elem.offsetParent;
 	} while (elem);
   return {left:left, top:top};
+}
+
+function commodityJsonInfoCallBack(){
+	alert(commodityInfo.sItemid);
+}
+
+function appendjs(url){
+	var script= document.createElement('script');
+		script.type= 'text/javascript';
+		script.src= url;
+	document.getElementsByTagName('head')[0].appendChild(script);
 }
