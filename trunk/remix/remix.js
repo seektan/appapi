@@ -125,7 +125,6 @@ function remix(){
 	for (var j=0,jlen=_rlist.length; j<jlen; j++){
 		_rlist[j].iid = _rlist[j].getAttribute("id").substring(1);
 		_rlist[j].onmouseover = function(){
-			console.log("hover");
 			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
 			if(!this.isLoad) appendjs(_ijson);
 			this.isLoad = 1;
@@ -160,19 +159,15 @@ function getXY(elem){
 }
 
 function commodityJsonInfoCallBack(){
-	console.log(commodityInfo.sItemid);
-	var _iitem = document.getElementById("i" + commodityInfo.sItemid);
-	console.log("1");
+	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
 		_iname.innerHTML = commodityInfo.name;
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
-	console.log("2");
 	_iitem.appendChild(_iname);
 	_iitem.appendChild(_iprice);
-	console.log("end");
 }
 
 function appendjs(url){
