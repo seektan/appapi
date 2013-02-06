@@ -124,9 +124,10 @@ function remix(){
 	var _rlist = document.querySelectorAll(".remix .ritem")
 	for (var j=0,jlen=_rlist.length; j<jlen; j++){
 		_rlist[j].iid = _rlist[j].getAttribute("iid");
-		_rlist[j].onmouseenter = function(){
+		_rlist[j].onmouseover = function(){
 			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
-			appendjs(_ijson);
+			if(!this.isLoad) appendjs(_ijson);
+			this.isLoad = 1;
 		}
 	}
 
