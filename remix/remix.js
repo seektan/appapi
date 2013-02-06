@@ -157,7 +157,7 @@ function getXY(elem){
 }
 
 function commodityJsonInfoCallBack(){console.log(commodityInfo.price+"data"+commodityInfo.name);
-	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
+	var imitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
 	console.log(_iitem);
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
@@ -165,8 +165,8 @@ function commodityJsonInfoCallBack(){console.log(commodityInfo.price+"data"+comm
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
-	_iitem.appendChild(_iname);
-	_iitem.appendChild(_iprice);
+	imitem.appendChild(_iname);
+	imitem.appendChild(_iprice);
 }
 
 function appendjs(url){
