@@ -85,7 +85,7 @@ function remix(){
 			_item.copycat.className = "copycat";
 			_item.copycat.style.top = getXY(imgs[i]).top + "px";
 			_item.copycat.style.left = getXY(imgs[i]).left + "px";
-			_item.link = getImgLink(imgs[i]) ? getImgLink(imgs[i]) : ("http://auction1.paipai.com/"+_item.id);
+			_item.link = "http://auction1.paipai.com/"+_item.id; //getImgLink(imgs[i]) ? getImgLink(imgs[i])
 
 			tis.appendChild(_item.copycat);
 
