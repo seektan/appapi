@@ -160,8 +160,8 @@ function getXY(elem){
 }
 
 function commodityJsonInfoCallBack(){
-	console.log("start");
-	var _iitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
+	console.log(commodityInfo.sItemid);
+	var _iitem = document.getElementById("i" + commodityInfo.sItemid);
 	console.log("1");
 	var _iname = document.createElement("span");
 		_iname.className = "rtitle";
