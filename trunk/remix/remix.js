@@ -31,10 +31,10 @@ function remix(){
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;overflow:hidden;} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
-			.remix .rphoto{box-shadow:0 0 0 2px #fff;} \
+			.remix .rphoto{box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
 			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
-			.remix .rprice{top:20px;left:10px;color:#fc0;} \
-			.remix .rtitle{width:188px;left:10px;bottom:20px;} \
+			.remix .rprice{top:10px;left:10px;color:#fc0;} \
+			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
 			.remix .ritem a:hover .rphoto{box-shadow:0 0 0 10px rgba(256, 128, 0, .8);} \
