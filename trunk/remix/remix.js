@@ -121,13 +121,15 @@ function remix(){
 
 	_close.onclick = removeMix;
 
-	document.querySelectorAll(".remix .ritem").forEach(function(n) {
-		n.onmouseover = function(){
-			var _ijson = "http://auction1.paipai.com/" + n.getAttribute("iid") + ".1";
+	var _rlist = document.querySelectorAll(".remix .ritem")
+	for (var j=0,jlen=_rlist.length; j<jlen; j++){
+		_rlist[j].iid = _rlist[j].getAttribute("iid");
+		_rlist[j].onmouseover = function(){
+			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
 			appendjs(_ijson);
 		}
-	});
-	
+	}
+
 	function removeMix(){
 		document.getElementsByTagName('html')[0].className = document.getElementsByTagName('html')[0].className.replace(" remixWrap","");
 		clearNode("remix");
