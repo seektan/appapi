@@ -77,7 +77,7 @@ function remix(){
 
 		if(_id){
 			_item.id = _id[1];
-			_item.photo = _ourl.replace(/\.0\.([0-9]{2,3}x[0-9]{2,3}\.)?jpg$/,".0.200x200.jpg");
+			_item.photo = _ourl.replace(/\.0\.([0-9]{2,3}x[0-9]{2,3}\.)?jpg/,".0.200x200.jpg");
 
 			_item.org = imgs[i];
 			_item.copycat = imgs[i].cloneNode(true);
