@@ -31,7 +31,7 @@ function remix(){
 			.remix .ritem{display:inline-block;vertical-align:top;width:200px;height:200px;padding:10px;position:relative;overflow:hidden;} \
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
-			.remix .rphoto{box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
+			.remix .rphoto{width:200px;height:200px;background:#fff;box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
 			.remix .rprice{top:10px;left:10px;color:#fc0;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
@@ -173,6 +173,7 @@ function commodityJsonInfoCallBack(){
 	var _imitem = _iiid.getElementsByTagName("a")[0];
 
 	_imitem.appendChild(_iname);
+	console.log(_imitem.appendChild(_iname));
 	_imitem.appendChild(_iprice);
 }
 
