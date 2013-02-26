@@ -166,7 +166,7 @@ function commodityJsonInfoCallBack(){
   _iprice.innerHTML = "&yen;"+commodityInfo.price;
 	var _ioffered = document.createElement("span");
 		_ioffered.className = "roffered";
-    _ioffered.innerHTML = "售出："+commodityInfo.buyCount;
+    _ioffered.innerHTML = commodityInfo.buyCount;
 
 
 	if(document.getElementById("id-" + commodityInfo.sItemid)){
