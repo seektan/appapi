@@ -40,7 +40,7 @@ function remix(){
 			.remix .rclose{position:fixed;top:10px;z-index:3;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
 			.remix .rclose:after{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(45deg);} \
 			.remix .rclose:before{content:'';position:absolute;top:8px;left:22px;width:6px;height:36px;background:#fff;-webkit-transform: rotate(-45deg);} \
-			.remix .rclose:hover{-webkit-transform: rotate(-180deg);border-color:rgba(256, 128, 0, .8);}
+			.remix .rclose:hover{-webkit-transform: rotate(-180deg);border-color:rgba(256, 128, 0, .8);} \
 			.remix .ritem_focus{overflow:visible;z-index:2;position:absolute;top:0;left:0;} \
 			.remix:hover .rclose{display:block;}";
 
