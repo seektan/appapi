@@ -33,6 +33,7 @@ function remix(){
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{width:200px;height:200px;background:#fff;box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
 			.remix .rprice{top:10px;left:10px;color:#fc0;} \
+			.remix .roffered{top:10px;right:10px;color:#fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
 			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
@@ -164,6 +165,9 @@ function commodityJsonInfoCallBack(){
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
+	var _ioffered = document.createElement("span");
+		_ioffered.className = "roffered";
+    _ioffered.innerHTML = commodityInfo.buyCount;
 
 
 	if(document.getElementById("id-" + commodityInfo.sItemid)){
@@ -175,6 +179,7 @@ function commodityJsonInfoCallBack(){
 
 	_imitem.appendChild(_iname);
 	_imitem.appendChild(_iprice);
+	_imitem.appendChild(_ioffered);
 }
 
 function appendjs(url){
