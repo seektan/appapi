@@ -96,7 +96,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem" id="i'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /></a></li>';
+		htmlStr += '<li class="ritem" id="id-'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
@@ -121,7 +121,7 @@ function remix(){
 
 	var _rlist = document.querySelectorAll(".remix .ritem")
 	for (var j=0,jlen=_rlist.length; j<jlen; j++){
-		_rlist[j].iid = _rlist[j].getAttribute("id").substring(1);
+		_rlist[j].iid = _rlist[j].getAttribute("id").substring(3);
 		_rlist[j].onmouseover = function(){
 			var _ijson = "http://auction1.paipai.com/" + this.iid + ".1";
 			if(!this.isLoad) appendjs(_ijson);
@@ -163,10 +163,13 @@ function commodityJsonInfoCallBack(){
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
-	
-	var imitem = document.getElementById("i" + commodityInfo.sItemid).getElementsByTagName("a")[0];
-	imitem.appendChild(_iname);
-	imitem.appendChild(_iprice);
+
+
+	var _iiid = document.getElementById("id-" + commodityInfo.sItemid) ? document.getElementById("id-" + commodityInfo.sItemid) : document.getElementById("id-" + commodityInfo.snapId);
+	var _imitem = iiid.getElementsByTagName("a")[0];
+
+	_imitem.appendChild(_iname);
+	_imitem.appendChild(_iprice);
 }
 
 function appendjs(url){
