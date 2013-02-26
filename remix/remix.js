@@ -165,8 +165,12 @@ function commodityJsonInfoCallBack(){
 		_iprice.innerHTML = commodityInfo.price;
 
 
-	document.getElementById("id-" + commodityInfo.sItemid) ? (var _iiid = document.getElementById("id-" + commodityInfo.sItemid)) : (var _iiid = document.getElementById("id-" + commodityInfo.snapId));
-	var _imitem = document.getElementById("id-" + commodityInfo.snapId).getElementsByTagName("a")[0];
+	if(document.getElementById("id-" + commodityInfo.sItemid)){
+		var _iiid = document.getElementById("id-" + commodityInfo.sItemid);
+	}else{
+		var _iiid = document.getElementById("id-" + commodityInfo.snapId);
+	}
+	var _imitem = _iiid.getElementsByTagName("a")[0];
 
 	_imitem.appendChild(_iname);
 	_imitem.appendChild(_iprice);
