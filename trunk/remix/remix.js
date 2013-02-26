@@ -164,6 +164,8 @@ function commodityJsonInfoCallBack(){
 		_iprice.className = "rprice";
 		_iprice.innerHTML = commodityInfo.price;
 
+
+	document.getElementById("id-" + commodityInfo.sItemid) ? (var _iiid = document.getElementById("id-" + commodityInfo.sItemid)) : (var _iiid = document.getElementById("id-" + commodityInfo.snapId));
 	var _imitem = document.getElementById("id-" + commodityInfo.snapId).getElementsByTagName("a")[0];
 
 	_imitem.appendChild(_iname);
