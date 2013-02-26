@@ -34,7 +34,7 @@ function remix(){
 			.remix .rphoto{width:200px;height:200px;background:#fff;box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
 			.remix .rprice{top:10px;left:10px;color:#fc0;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
-			.remix .roffered{top:10px;right:10px;white-space:nowrap;color:#fff;} \
+			.remix .rviewed{top:10px;right:10px;white-space:nowrap;color:#fff;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
 			.remix .ritem a:hover .rphoto{box-shadow:0 0 0 10px rgba(256, 128, 0, .8);} \
 			.remix .rclose{position:fixed;top:10px;z-index:3;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
@@ -164,9 +164,9 @@ function commodityJsonInfoCallBack(){
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
   _iprice.innerHTML = "&yen;"+commodityInfo.price;
-	var _ioffered = document.createElement("span");
-		_ioffered.className = "roffered";
-    _ioffered.innerHTML = commodityInfo.buyCount;
+	var _iviewed= document.createElement("span");
+		_iviewed.className = "rviewed";
+    _iviewed.innerHTML = commodityInfo.visitCount;
 
 
 	if(document.getElementById("id-" + commodityInfo.sItemid)){
@@ -178,7 +178,7 @@ function commodityJsonInfoCallBack(){
 
 	_imitem.appendChild(_iname);
 	_imitem.appendChild(_iprice);
-	_imitem.appendChild(_ioffered);
+	_imitem.appendChild(_iviewed);
 }
 
 function appendjs(url){
