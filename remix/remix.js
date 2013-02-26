@@ -166,7 +166,7 @@ function commodityJsonInfoCallBack(){
   _iprice.innerHTML = "&yen;"+commodityInfo.price;
 	var _iviewed= document.createElement("span");
 		_iviewed.className = "rviewed";
-    _iviewed.innerHTML = commodityInfo.visitCount;
+    _iviewed.innerHTML = commodityInfo.visitCount+"views";
 
 
 	if(document.getElementById("id-" + commodityInfo.sItemid)){
