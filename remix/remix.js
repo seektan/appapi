@@ -33,9 +33,8 @@ function remix(){
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{width:200px;height:200px;background:#fff;box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
 			.remix .rprice{top:10px;left:10px;color:#fc0;} \
-			.remix .roffered{top:10px;right:10px;color:#fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
-			.remix .roffered{top:20px;right:10px;white-space:nowrap;} \
+			.remix .roffered{top:10px;right:10px;white-space:nowrap;color:#fff;} \
 			.remix .ritem a:hover span{filter:alpha(opacity=100);opacity:1;} \
 			.remix .ritem a:hover .rphoto{box-shadow:0 0 0 10px rgba(256, 128, 0, .8);} \
 			.remix .rclose{position:fixed;top:10px;z-index:3;right:5px;width:50px;height:50px;border-radius:50%;border:4px solid #fff;background:#000;cursor:pointer;display:none;} \
@@ -164,10 +163,10 @@ function commodityJsonInfoCallBack(){
 		_iname.innerHTML = commodityInfo.name;
 	var _iprice = document.createElement("span");
 		_iprice.className = "rprice";
-		_iprice.innerHTML = commodityInfo.price;
+  _iprice.innerHTML = "&yen;"+commodityInfo.price;
 	var _ioffered = document.createElement("span");
 		_ioffered.className = "roffered";
-    _ioffered.innerHTML = commodityInfo.buyCount;
+    _ioffered.innerHTML = "售出："+commodityInfo.buyCount;
 
 
 	if(document.getElementById("id-" + commodityInfo.sItemid)){
