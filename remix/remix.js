@@ -178,7 +178,7 @@ function commodityJsonInfoCallBack(){
 
 	_imitem.appendChild(_iname);
 	_imitem.appendChild(_iprice);
-	_imitem.appendChild(_iviewed);
+	//_imitem.appendChild(_iviewed);
 }
 
 function appendjs(url){
