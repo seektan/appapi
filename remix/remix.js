@@ -32,7 +32,7 @@ function remix(){
 			.remix .ritem a{color:#fff;text-align:left;} \
 			.remix .ritem span{position:absolute;background:rgba(0,0,0,0.7);padding:4px 6px;filter:alpha(opacity=0);opacity:0;-webkit-transition:opacity 0.1s;} \
 			.remix .rphoto{width:200px;height:200px;background:#fff;box-shadow:0 0 0 2px #fff;-webkit-transition:box-shadow 0.3s;} \
-			.remix .rprice{top:10px;left:10px;color:#fc0;} \
+			.remix .ritem .rprice{top:10px;left:10px;color:#fc0;filter:alpha(opacity=100);opacity:1;} \
 			.remix .roffered{top:10px;right:10px;color:#fff;} \
 			.remix .rtitle{width:188px;left:10px;bottom:10px;} \
 			.remix .rviewed{top:10px;right:10px;white-space:nowrap;color:#fff;} \
