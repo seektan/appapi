@@ -56,9 +56,13 @@ function remix(){
 	
 	clearNode("remix");
 	clearNode("tempImgs");
-
-	var _pfItems= document.querySelectorAll(".item-show"),//document.getItems("http://schema.org/Product")
-		data = [],
+  
+  if(document.getItems){
+    var _pfItems= document.getItems("http://schema.org/Product");
+  }else{
+	var _pfItems= document.querySelectorAll(".item-show");
+  }
+		var data = [],
 		htmlStr = '<ul class="rlist">',
 		tis = document.createElement("div"),
 		ch = document.documentElement.clientHeight,
