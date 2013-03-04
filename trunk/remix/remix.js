@@ -91,6 +91,7 @@ function remix(){
 		_item.link = _pfItems[i].querySelector(".photo a").getAttribute("href");
 		_item.price= _pfItems[i].querySelector(".pp_price").innerHTML;
 		_item.offered= _pfItems[i].querySelector(".total").innerHTML;
+		_item.title= _pfItems[i].querySelectorAll("h3 a")[2].innerText;
 
 		tis.appendChild(_item.copycat);
 
@@ -103,7 +104,7 @@ function remix(){
 	document.body.appendChild(tis);
 
 	for(var i=0, len=data.length; i<len; i++){
-		htmlStr += '<li class="ritem" id="id-'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /><span class="rprice">' + data[i].price+ '<span><span class="roffered">' + data[i].offered+ '<span></a></li>';
+		htmlStr += '<li class="ritem" id="id-'+data[i].id+'"><a href="' + data[i].link + '" target="_blank"><img src="' + data[i].photo + '" class="rphoto" style="-webkit-animation:bounceUp 0.6s '+Math.random()+'s;" /><span class="rprice">' + data[i].price+ '</span><span class="roffered">' + data[i].offered+ '</span><span class="rtitle">' + data[i].title+ '</span></a></li>';
 		data[i].copycat.style.cssText = "opacity:0;top:" + posy + "px;left:" + getXY(data[i].org).left + "px;-webkit-transition:top " + parseInt(Math.random()*5) + "s ease-out, opacity 1s;";
 		data[i].org.style.cssText = "opacity:0;";
 	}
