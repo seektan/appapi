@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>查快递</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+<style type="text/css">
+<!--
+/**
+ * @desc: QQ速递微信端
+ * @author: laserji<jiguang1984#gmail.com>
+ * @date: 12-12-27
+ */
+
+/* reset */
+body,p,h1,h2,h3,h4,ul,ol,li,dl, dt, dd,form{margin: 0;padding:0;font-size: 100%;}
+ul,ol{list-style: none;}
+a{text-decoration:none;}
+body{font-size: 13px; line-height: 1.6; font-family:"ff-tisa-web-pro-1", "ff-tisa-web-pro-2", "Lucida Grande", "Hiragino Sans GB", "Hiragino Sans GB W3"}
+
+/* ui container */
+.ui-field-contain{padding: 20px 10px 10px; background-color: #e5e5e5; color: #000000; }
+.ui-field-contain-narrow{width:280px;padding: 15px 20px;}
+
+/* bar */
+.ui-field-top-bar, .ui-field-bottom-bar{height: 40px; padding: 15px 12px; margin: -20px -10px 20px; background-color: #fff; box-shadow: 0 2px 10px 2px #c9c9c9;}
+.ui-field-bottom-bar{ background-color: #e5e5e5; border-top:1px solid #fff; box-shadow: 0 -2px 10px 2px #c9c9c9; margin: 0 -10px -10px;}
+
+/* list view */
+.ui-listview{margin-bottom: 15px; box-shadow: 0 1px 5px #dadada;}
+.ui-listview .ui-li{ min-height: 15px; padding: 10px 15px; margin-top: -1px; border: 1px solid #d5d2d2; background-color: #ffffff; position: relative;}
+.ui-listview .ui-li-clickable{ padding: 10px 35px 10px 15px; cursor: pointer;}
+.ui-listview .ui-li-bg-gray{ background-color: #f2f2f2;}
+.ui-listview .ui-li:first-child{border-top-left-radius: 7px; border-top-right-radius: 7px; }
+.ui-listview .ui-li:last-child{border-bottom-left-radius: 7px; border-bottom-right-radius: 7px; }
+.ui-listview .ui-li-padding-zero{padding: 0;}
+
+/* inline content */
+.ui-content-contain{margin-bottom: 10px}
+.ui-inline-title, .ui-inline-title-narrow, .ui-inline-title-wide, .ui-inline-content{display: inline-block; vertical-align: top;}
+.ui-inline-title{width: 48px;}
+.ui-inline-title-narrow{width: 30px;}
+.ui-inline-title-wide{width: 60px;}
+
+/* block content */
+.ui-block-title{display: block; padding-bottom: 5px;}
+
+/* two columns */
+.ui-clear:after{content: ""; display: table; clear: both;}
+.ui-clear .ui-pull-left{float: left;}
+.ui-clear .ui-pull-right{float: right;}
+
+/* arrow */
+.ui-arrow-right{display: inline-block; width: 6px; height: 6px; border-bottom: 3px solid #8d949b; border-right: 3px solid #8d949b; -webkit-transform: rotate(-45deg); position: absolute; top: 50%; right: 15px; margin-top: -5px;}
+.ui-arrow-right:after{ content: ""; width: 1px; height: 9px; background-color: #7c8288; position: absolute; bottom: -3px; right: -3px; }
+
+/* button */
+.ui-btn{width: 100%; height: 34px; margin-bottom: 10px; border: 1px solid #333; border-radius: 4px; box-shadow:0 0 3px 1px #f8797d inset; box-shadow: 0 1px 3px 1px #cbcbcb; text-align: center; font-size: 15px; letter-spacing: 0.1em; cursor: pointer;}
+.ui-btn-red{border-color: #ec3c42;
+    background-color: #f33b41;
+    background-image: -webkit-linear-gradient(top, #ff8186 0%,#ff7378 1%,#ff696e 3%,#fe6166 4%,#fe5e63 5%,#f33b41 92%,#f33b41 95%,#f33e44 96%,#f45258 99%,#f66469 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff8186), color-stop(1%,#ff7378), color-stop(3%,#ff696e), color-stop(4%,#fe6166), color-stop(5%,#fe5e63), color-stop(92%,#f33b41), color-stop(95%,#f33b41), color-stop(96%,#f33e44), color-stop(99%,#f45258), color-stop(100%,#f66469));
+    background-image: linear-gradient(top, #ff8186 0%,#ff7378 1%,#ff696e 3%,#fe6166 4%,#fe5e63 5%,#f33b41 92%,#f33b41 95%,#f33e44 96%,#f45258 99%,#f66469 100%);
+    color: #fff;}
+.ui-btn-gray{border-color: #d5d2d2;
+    background-color: #e8e8e8;
+    background-image: -webkit-linear-gradient(top, #ffffff 0%,#f8f8f8 32%,#e7e7e7 90%,#e8e8e8 96%,#f1eeee 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(32%,#f8f8f8), color-stop(90%,#e7e7e7), color-stop(96%,#e8e8e8), color-stop(100%,#f1eeee));
+    background-image: linear-gradient(top, #ffffff 0%,#f8f8f8 32%,#e7e7e7 90%,#e8e8e8 96%,#f1eeee 100%);
+    color:#333;}
+.ui-btn-delete{width:54px;height: 32px; border-color: #721819;
+    background-color:#dd5b5f;
+    background-image: -webkit-linear-gradient(top, #cd8083 0%,#f6989c 2%,#f0898c 13%,#dd5b5f 39%,#d84e52 48%,#d64a4e 50%,#cf2d2f 52%,#cf2b2d 53%,#cf2b2d 98%,#a12123 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cd8083), color-stop(2%,#f6989c), color-stop(13%,#f0898c), color-stop(39%,#dd5b5f), color-stop(48%,#d84e52), color-stop(50%,#d64a4e), color-stop(52%,#cf2d2f), color-stop(53%,#cf2b2d), color-stop(98%,#cf2b2d), color-stop(100%,#a12123));
+    background-image: linear-gradient(top, #cd8083 0%,#f6989c 2%,#f0898c 13%,#dd5b5f 39%,#d84e52 48%,#d64a4e 50%,#cf2d2f 52%,#cf2b2d 53%,#cf2b2d 98%,#a12123 100%);
+    color: #fff; text-shadow: 0 -1px 1px #713436; font-size: 13px; letter-spacing: 0;}
+
+/* input */
+.ui-input{width: 100%; height: 26px; line-height: 26px; -webkit-appearance:none; border: 1px solid #d5d2d2; font-size: 13px;}
+
+/* label */
+.ui-label{line-height: 29px; /* 与checkbox 等高 */}
+
+/* checkbox iphone style */
+.ui-checkbox{display:inline-block; width: 76px; height: 26px;border: 1px solid #878787; border-radius: 14px; cursor:pointer;vertical-align: middle;position: relative;background: -webkit-linear-gradient(top, #9e9e9e 0%,#b4b4b4 2%,#dbdbdb 8%,#ebebeb 12%,#eeeeee 14%,#eeeeee 96%,#f4f4f4 98%,#d8d8d8 100%);-webkit-tap-highlight-color:rgba(0, 0, 0, 0);}
+.ui-checkbox > input[type="checkbox"]{display: none;}
+.ui-checkbox > .ui-checkbox-highlight{width:65px; height:12px; border: 1px solid #f8f8f8; border-right: none; border-radius: 7px;background: -webkit-linear-gradient(top, #f8f8f8 0%,#fefefe 100%);position: absolute; bottom: 0; left: 5px;}
+.ui-checkbox > .ui-checkbox-line{display: block; width: 10px; height: 10px; line-height: 10px; border: 2px solid #333; opacity: 0.5;  border-radius: 7px; background-color: #fff; position: absolute; top: 6px; left: 42px; }
+.ui-checkbox > .ui-checkbox-trigger{display: block; width: 26px; height: 26px; border: 1px solid #6c6c6c; border-radius: 14px; border-right-color: #9e9e9e; border-bottom-color: #989898; background: -webkit-linear-gradient(top, #e6e6e6 0%,#cacaca 2%,#c8c8c8 6%,#e5e5e5 98%,#f5f5f5 100%);box-shadow: 0 0 2px 1px #e3e5e7 inset, 5px 0 5px -4px #c4c4c4;  position: absolute; top: -1px; left: -2px;}
+
+/* checkbox iphone style checked */
+.ui-checkbox-checked{ border: 1px solid #1561a2; border-bottom-color: #367fbd;background: -webkit-linear-gradient(top, #0f5b9c 0%,#0060b1 2%,#0075d7 8%,#007de7 12%,#007fea 14%,#007fea 98%,#7ba9d1 100%); }
+.ui-checkbox-checked > .ui-checkbox-highlight{ border: 1px solid #218fec; border-left: none; border-bottom: none; background: -webkit-linear-gradient(top, #218fec 0%,#2f96ed 24%,#6eb6f3 92%,#73b3ea 96%,#7ba9d1 100%);position: absolute;}
+.ui-checkbox-checked > .ui-checkbox-line{ width: 2px; height: 14px; line-height: 14px; border:none; border-top: 1px solid #005ba7; opacity: 1; background-color: #fff; position: absolute; top: 6px; left: 25px; }
+.ui-checkbox-checked> .ui-checkbox-trigger{ border: 1px solid #004f92;border-right-color: #1561a2; background: -webkit-linear-gradient(top, #e6e6e6 0%,#cacaca 2%,#c8c8c8 6%,#e5e5e5 98%,#f5f5f5 100%);box-shadow: 0 0 2px 1px #e3e5e7 inset, -5px 0 5px -4px #006bc6; left: 49px; }
+
+
+/* checkbox simple style */
+.ui-checkbox-simple{display: inline-block; width: 26px; height: 26px; border: 1px solid #d5d2d2; background-color: #fff; border-radius: 5px; box-shadow: 0 0 3px 1px #d6d6d6 inset; vertical-align: middle; cursor: pointer; position: relative;}
+.ui-checkbox-simple input[type="checkbox"]{display: none;}
+.ui-checkbox-simple .ui-checkbox-mark{display: none; width: 13px; height: 5px; border-bottom: 3px solid #8d949b; border-left: 3px solid #8d949b; -webkit-transform: rotate(-45deg); margin-left: 5px; margin-bottom: -1px; }
+.ui-checkbox-simple .ui-checkbox-mark:after{content: ""; width: 1px; height: 5px; background-color: #7c8288; position: absolute; bottom: 0; left: -1px; }
+
+/* checkbox simple style checked */
+.ui-checkbox-simple-checked .ui-checkbox-mark{display: inline-block;}
+
+/* text */
+.ui-text-14{font-size: 14px;}
+.ui-text-15{font-size: 15px;}
+.ui-text-bold{font-weight: bold;}
+.ui-text-color-offwhite{color: #afafaf;}
+.ui-text-color-gray{color: #666666;}
+.ui-text-color-red{color: #f84c52;}
+.ui-text-color-white{color: #ffffff;}
+
+/* background */
+.ui-bg-offwhite{background-color: #f2f2f2;}
+
+/* padding */
+.ui-padding-side-10{padding-left: 10px; padding-right: 10px;}
+.ui-padding-top-10{padding-top: 10px;}
+.ui-padding-zero{padding:0;}
+
+/* icon & bubble etc. */
+.ui-bubble{display: block; height: 20px; line-height: 20px; padding: 0 5px; border: 1px solid #f35e63; border-radius: 10px; background: -webkit-linear-gradient(top, #f35e63 0%,#ff7379 2%,#fe666b 7%,#fe5d63 12%,#f43d43 86%,#f33e44 88%,#f5454b 93%,#f8535a 98%,#f35e63 100%); box-shadow: 0 0 2px 1px #fe7178 inset, 0 1px 2px 0 #d6bdbe; position: absolute; top: 2px; left: 20px;font:normal bold 13px/20px arial; color: #fff;}
+.ui-ribbon, .ui-ribbon:before, .ui-ribbon:after{display: block; height: 20px; line-height: 20px; padding: 0 10px; border: 1px solid #f35f64; background: -webkit-linear-gradient(top, #f35e63 0%,#ff7379 2%,#fe666b 7%,#fe5d63 12%,#f43d43 86%,#f33e44 88%,#f5454b 93%,#f8535a 98%,#f35e63 100%); box-shadow: 0 0 2px 1px #fe7178 inset; position: absolute; top: -1px; right: -2px; font:13px/20px "Microsoft YaHei"; color: #fff;}
+.ui-ribbon:before, .ui-ribbon:after{content: ""; width: 10px; height: 10px; padding: 0; border-right: none; box-shadow: 2px 0 2px -1px #fe7178 inset;   position: absolute; top: -1px; left: -4px; right: auto;}
+.ui-ribbon:before{-webkit-transform: skew(25deg) translateZ(0); border-bottom: none; border-left-color: #f36065;background: -webkit-linear-gradient(top, #fd6f75 0%,#fe7178 3%,#fe7176 5%,#fe5f64 21%,#fe5b61 26%,#f94d53 100%);}
+.ui-ribbon:after{-webkit-transform: skew(-25deg) translateZ(0); border-top: none; border-left-color: #ed5c61; background: -webkit-linear-gradient(top, #f94d53 0%,#f43d43 74%,#f5454b 82%,#f74e54 86%,#fb656c 94%,#fd6e75 100%);  top: 10px; }
+
+/* icon list */
+.ui-icon-list{line-height: 1em;}
+.ui-icon-list li{display: inline-block; width: 25px; height: 25px; padding: 1px; margin-right: 5px; border: 1px solid #b0aeae; border-radius: 2px; position: relative; }
+
+/* contact list */
+.ui-contact-list-contain{}
+.ui-contact-list-contain .ui-li{height: 45px; line-height: 45px; padding-left: 24px; font-size: 13px; border-bottom: 1px solid #e0e0e0; color: #000;}
+.ui-contact-list-contain .ui-li-separator{height: 23px; padding-left:12px; border-top: 1px solid #848484; border-bottom: 1px solid #9d9d9d; font: bold 18px/23px arial; color: #fff;
+    background-color: #bfbfbf;
+    background-image: -webkit-linear-gradient(top, #959595 0%,#b6b6b6 2%,#b1b1b1 4%,#a3a3a3 7%,#a1a1a1 9%,#b9b9b9 53%,#bfbfbf 96%,#bcbcbc 98%,#a1a1a1 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#959595), color-stop(2%,#b6b6b6), color-stop(4%,#b1b1b1), color-stop(7%,#a3a3a3), color-stop(9%,#a1a1a1), color-stop(53%,#b9b9b9), color-stop(96%,#bfbfbf), color-stop(98%,#bcbcbc), color-stop(100%,#a1a1a1));
+    background-image: linear-gradient(top, #959595 0%,#b6b6b6 2%,#b1b1b1 4%,#a3a3a3 7%,#a1a1a1 9%,#b9b9b9 53%,#bfbfbf 96%,#bcbcbc 98%,#a1a1a1 100%);
+    text-shadow: 1px 1px 0 #a1a1a1; }
+.ui-contact-list-index{width: 50px; height: 100%;  position: fixed; top: 2px; right: 0; text-align: center}
+.ui-contact-list-index li{height: 3.86%;}
+.ui-contact-list-index a{display:block; height: 100%; text-decoration: none; font: bold 12px/1.5em arial; color: #878787;}
+
+/* QQ速递样式 ***********/
+
+/* sprite */
+.sudi .icon-sudi, .icon, .sudi .open-failed .icon-failed{background: url(http://static.gtimg.com/img_v1/express/weixin_sprite.png) no-repeat 0 0; -webkit-background-size: 60px 200px;}
+
+.sudi .brand{margin-bottom: 5px;}
+.sudi .brand .ui-text-15{padding-left: 5px; line-height: 60px;vertical-align: top;}
+.sudi .qqbuy-tit{display: inline-block; width: 80px; height: 45px; line-height: 45px; background-color: #f84c52; text-align: center; font-size: 14px;}
+.sudi .qqbuy-cnt{display: inline-block; height: 45px; line-height: 45px; font-size: 14px; padding-left: 10px;}
+.sudi .user_desc .ui-inline-title-wide{vertical-align: top;}
+.sudi .user_desc .ui-inline-content{width: 175px;}
+.sudi .express{position: relative;}
+.sudi .express .barcode{display: block; width: 32px; height: 20px; line-height: 20px; border: 2px solid #e2a32a;border-right-width: 3px;  position: absolute; top: -2px; right: 5px;color:#333;text-indent:-3.5em;}
+.sudi .express .barcode:after{content:""; display: block; width: 3px; height: 20px; line-height: 20px; margin-left: 4px; border-left: 1px solid #e2a32a; border-right: 1px solid #e2a32a; box-shadow: 2px 0 0 0 #e2a32a, 10px 0 0 0 #e2a32a,  20px 0 0 0 #e2a32a; position: absolute; top: 0; left: 0; }
+
+/* icon */
+.sudi .icon-sudi{display: inline-block; width: 60px; height: 60px;}
+.icon{margin-top: 4px; margin-left: 18px;} /* 调整位置 */
+.icon{display: inline-block; width: 26px; height: 26px; border: 1px solid #8d949b; border-top-color: #7c8288;  border-radius: 14px; background-color: #8d949b;}
+.icon-flight{background-position: 5px -56px;}
+.icon-spot{background-position: -28px -56px;}
+.icon-clock{background-position: 5px -82px;}
+.icon-chat{background-position: -28px -80px;}
+.icon-gift{background-position: 4px -106px;}
+.icon-heart{background-position: -28px -106px;}
+
+/* 打开失败 */
+.sudi .open-failed{width: 110px; height: 110px; margin: 90px auto; border: 1px solid #727272; border-radius: 10px; background-color: #727272; text-align: center; }
+.sudi .open-failed .icon-failed{display: block; width: 60px; height: 60px; margin: 10px auto; background-position: 7px -127px;}
+
+/* 各快递公司图标 */
+/* 顶部大图标 */
+.sudi .ui-field-top-bar, .sudi .ui-field-bottom-bar{position: relative;}
+.sudi .ui-field-bottom-bar{height: 26px; padding-top: 20px; padding-bottom: 25px;}
+.sudi .brand-big{width: 110px; position: absolute; top: 15px; right: 10px;}
+/* 列表中小图标 */
+.sudi .brand-small{width: 80px; position: absolute; top: 15px; right: 30px;}
+.sudi .ui-btn-delete{position: absolute; top: 15px; right: 30px;}
+
+/* 热门快递 */
+.ui-li-hot{*zoom:1;overflow:hidden;padding:18px 0 0 7px;}
+.ui-li-hot li{float:left;padding:0 7px;width:57px;height:96px;text-align:center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.ui-li-hot li span{display:block;width:43px;height:43px;padding:7px;margin:0 auto 4px;box-shadow:0 1px 3px #aaa;border-radius:7px;}
+.ui-li-hot li i{display:block;width:43px;height:43px;background:#d4d4d4;}
+-->
+</style>
+</head>
+<body>
+<!--02 查快递 -->
+<div id="divQuery" class="ui-field-contain sudi">
+    <ul class="ui-listview">
+        <li id="liCompany" class="ui-li ui-li-clickable">
+        	  <div id='divCompanySelect'>
+                    	选择快递公司
+                </div>
+            <i class="ui-arrow-right"></i>
+        </li>
+        <li class="ui-li">
+            <span id="spanDeliverId" class="ui-block-title">请输入快递单号</span>
+            <span class="express">
+                <input class="ui-input" id="txtDeliverId" type="text">
+                <span class="barcode">扫条码</span>
+            </span>
+        </li>
+        <li class="ui-li">
+            <div class="ui-clear">
+                <span class="ui-pull-left">
+                     <lable for="" class="ui-label">有新的物流状态时提醒我</lable>
+                </span>
+                </span>
+					<span class="ui-checkbox-simple ui-pull-right ui-checkbox-simple-checked" id='spanSubscribe'>
+       				 <input type="checkbox" id="chkSubscribe">
+        			 <i id="checkMark" class="ui-checkbox-mark"></i>
+    				</span>
+            </div>
+        </li>
+    </ul>
+
+    <button id="btnquery" type="button" class="ui-btn ui-btn-red">查询</button>
+    <button id="btnhistory" type="button" class="ui-btn ui-btn-gray">查看记录</button>
+</div>
+
+<div id="divCompany" class="ui-contact-list-contain">
+    <!-- 先载入索引 -->
+    <ul id="indexList" class="ui-contact-list-index"><li><a name="A" onclick="scroller('A', 200)">A</a></li><li><a name="B" onclick="scroller('B', 200)">B</a></li><li><a name="C" onclick="scroller('C', 200)">C</a></li><li><a name="D" onclick="scroller('D', 200)">D</a></li><li><a name="E" onclick="scroller('E', 200)">E</a></li><li><a name="F" onclick="scroller('F', 200)">F</a></li><li><a name="G" onclick="scroller('G', 200)">G</a></li><li><a name="H" onclick="scroller('H', 200)">H</a></li><li><a name="J" onclick="scroller('J', 200)">J</a></li><li><a name="K" onclick="scroller('K', 200)">K</a></li><li><a name="L" onclick="scroller('L', 200)">L</a></li><li><a name="M" onclick="scroller('M', 200)">M</a></li><li><a name="N" onclick="scroller('N', 200)">N</a></li><li><a name="O" onclick="scroller('O', 200)">O</a></li><li><a name="P" onclick="scroller('P', 200)">P</a></li><li><a name="Q" onclick="scroller('Q', 200)">Q</a></li><li><a name="R" onclick="scroller('R', 200)">R</a></li><li><a name="S" onclick="scroller('S', 200)">S</a></li><li><a name="T" onclick="scroller('T', 200)">T</a></li><li><a name="U" onclick="scroller('U', 200)">U</a></li><li><a name="W" onclick="scroller('W', 200)">W</a></li><li><a name="X" onclick="scroller('X', 200)">X</a></li><li><a name="Y" onclick="scroller('Y', 200)">Y</a></li><li><a name="Z" onclick="scroller('Z', 200)">Z</a></li></ul>
+    <ul id="companyList" class="ui-contact-list">
+		<li class="ui-li ui-li-separator" id="hot">热门</li>
+		<li>
+			<ul class="ui-li-hot">
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+				<li><span><i class="hot-1"></i></span>彪记快递</li>
+			</ul>
+		</li>
+		<li class="ui-li ui-li-separator" id="A">A</li>
+		<li class="ui-li" code="" name="包裹">包裹</li>
+		<li class="ui-li" code="004aae" name="AAE全球专递">AAE全球专递</li><li class="ui-li" code="005anjie" name="安捷快递">安捷快递</li><li class="ui-li" code="006anxinda" name="安信达快递">安信达快递</li><li class="ui-li ui-li-separator" id="B">B</li><li class="ui-li" code="007biaoji" name="彪记快递">彪记快递</li><li class="ui-li" code="wu104bhtguoji" name="BHT国际">BHT国际</li><li class="ui-li" code="wu105baifudongfang" name="百福东方">百福东方</li><li class="ui-li ui-li-separator" id="C">C</li><li class="ui-li" code="008cces" name="希伊艾斯快递">希伊艾斯快递</li><li class="ui-li" code="009coe " name="中国东方（COE）">中国东方（COE）</li><li class="ui-li" code="guotong" name="国通快递">国通快递</li><li class="ui-li" code="chinapost" name="邮政电商小包">邮政电商小包</li><li class="ui-li" code="010changyu" name="长宇物流">长宇物流</li><li class="ui-li ui-li-separator" id="D">D</li><li class="ui-li" code="" name="DHL-德国">DHL-德国</li><li class="ui-li" code="013dhl" name="DHL">DHL</li><li class="ui-li" code="011datian" name="大田物流">大田物流</li><li class="ui-li" code="012debang" name="德邦物流">德邦物流</li><li class="ui-li" code="wu106dpex" name="DPEX">DPEX</li><li class="ui-li" code="014dsukuaidi" name="D速快递">D速快递</li><li class="ui-li ui-li-separator" id="E">E</li><li class="ui-li" code="001ems" name="EMS">EMS</li><li class="ui-li ui-li-separator" id="F">F</li><li class="ui-li" code="" name="FedEx-美国">FedEx-美国</li><li class="ui-li" code="015fedex" name="FedEx">FedEx</li><li class="ui-li" code="wu107fanke" name="凡客">凡客</li><li class="ui-li" code="016feikangda" name="飞康达物流">飞康达物流</li><li class="ui-li" code="017fenghuang" name="凤凰快递">凤凰快递</li><li class="ui-li" code="wu110feisuda" name="飞快达">飞快达</li><li class="ui-li" code="wu108fedexguoji" name="FedEx-国际">FedEx-国际</li><li class="ui-li ui-li-separator" id="G">G</li><li class="ui-li" code="" name="挂号信">挂号信</li><li class="ui-li" code="wu112gls" name="GLS">GLS</li><li class="ui-li" code="wu111gongsuda" name="共速达">共速达</li><li class="ui-li" code="018ganzhongnengda" name="港中能达物流">港中能达物流</li><li class="ui-li" code="019guangdongyouzheng" name="广东邮政物流">广东邮政物流</li><li class="ui-li ui-li-separator" id="H">H</li><li class="ui-li" code="021henglu" name="恒路物流">恒路物流</li><li class="ui-li" code="020huitong" name="汇通快运">汇通快运</li><li class="ui-li" code="022huaxialong" name="华夏龙物流">华夏龙物流</li><li class="ui-li" code="wu036haiwaihuanqiu" name="海外环球快递">海外环球快递</li><li class="ui-li" code="wu113haihangtiantian" name="海航天天">海航天天</li><li class="ui-li ui-li-separator" id="J">J</li><li class="ui-li" code="023jinda" name="金大物流">金大物流</li><li class="ui-li" code="026jingpin" name="京品快递">京品快递</li><li class="ui-li" code="wu115jiayi" name="佳怡物流">佳怡物流</li><li class="ui-li" code="024jinguang" name="京广速递">京广速递</li><li class="ui-li" code="027jixianda" name="急先达物流">急先达物流</li><li class="ui-li" code="wu116jinyue" name="晋越快递">晋越快递</li><li class="ui-li" code="028jiayunmei" name="加运美速递">加运美速递</li><li class="ui-li" code="025jiajiwuliu" name="佳吉快运">佳吉快运</li><li class="ui-li" code="wu114jialidatong" name="嘉里大通">嘉里大通</li><li class="ui-li ui-li-separator" id="K">K</li><li class="ui-li" code="029kuaijie" name="快捷速递">快捷速递</li><li class="ui-li ui-li-separator" id="L">L</li><li class="ui-li" code="031longban" name="龙邦物流">龙邦物流</li><li class="ui-li" code="wu005lejiedi" name="乐捷递">乐捷递</li><li class="ui-li" code="wu118lanbiao" name="蓝镖快递">蓝镖快递</li><li class="ui-li" code="wu117lianbang" name="联邦快递">联邦快递</li><li class="ui-li" code="wu119lijisong" name="立即送">立即送</li><li class="ui-li" code="030lianhaotong" name="联昊通物流">联昊通物流</li><li class="ui-li ui-li-separator" id="M">M</li><li class="ui-li" code="032minghang" name="民航快递">民航快递</li><li class="ui-li" code="wu120meiguo" name="美国快递">美国快递</li><li class="ui-li" code="vp073menduimen" name="苏州门对门">苏州门对门</li><li class="ui-li ui-li-separator" id="N">N</li><li class="ui-li" code="wu121nengda" name="能达物流">能达物流</li><li class="ui-li ui-li-separator" id="O">O</li><li class="ui-li" code="wu122ocs" name="OCS">OCS</li><li class="ui-li ui-li-separator" id="P">P</li><li class="ui-li" code="" name="平邮">平邮</li><li class="ui-li" code="033peisihuoyun" name="配思货运">配思货运</li><li class="ui-li ui-li-separator" id="Q">Q</li><li class="ui-li" code="037quanyi" name="全一快递">全一快递</li><li class="ui-li" code="034quanchen" name="全晨快递">全晨快递</li><li class="ui-li" code="035quanjitong" name="全际通物流">全际通物流</li><li class="ui-li" code="036quanritong" name="全日通快递">全日通快递</li><li class="ui-li" code="wu021quanfeng" name="全峰快递">全峰快递</li><li class="ui-li ui-li-separator" id="R">R</li><li class="ui-li" code="vp088rufengda" name="如风达快递">如风达快递</li><li class="ui-li ui-li-separator" id="S">S</li><li class="ui-li" code="039suer" name="速尔物流">速尔物流</li><li class="ui-li" code="002shentong" name="申通快递">申通快递</li><li class="ui-li" code="003shunfeng" name="顺丰速运">顺丰速运</li><li class="ui-li" code="038shenghui" name="盛辉物流">盛辉物流</li><li class="ui-li" code="wu124santai" name="三态速递">三态速递</li><li class="ui-li" code="040shengfeng" name="盛丰物流">盛丰物流</li><li class="ui-li" code="wu007saiaodi" name="赛澳递">赛澳递</li><li class="ui-li" code="wu023shangcheng" name="尚橙物流">尚橙物流</li><li class="ui-li" code="wu123shangdaguoji" name="上大国际">上大国际</li><li class="ui-li" code="wu004shandonghaihong" name="山东海红">山东海红</li><li class="ui-li ui-li-separator" id="T">T</li><li class="ui-li" code="043tnt" name="TNT">TNT</li><li class="ui-li" code="042tiantian" name="天天快递">天天快递</li><li class="ui-li" code="041tiandihuayu" name="天地华宇">天地华宇</li><li class="ui-li ui-li-separator" id="U">U</li><li class="ui-li" code="044ups" name="UPS">UPS</li><li class="ui-li" code="wu125usps" name="USPS">USPS</li><li class="ui-li ui-li-separator" id="W">W</li><li class="ui-li" code="045wanjia" name="万家物流">万家物流</li><li class="ui-li" code="047wanxiang" name="万象物流">万象物流</li><li class="ui-li" code="046wenjiesudi" name="文捷航空速递">文捷航空速递</li><li class="ui-li ui-li-separator" id="X">X</li><li class="ui-li" code="048xinbang" name="新邦物流">新邦物流</li><li class="ui-li" code="049xinfeng" name="信丰物流">信丰物流</li><li class="ui-li" code="050xingcheng" name="星晨急便">星晨急便</li><li class="ui-li" code="051xinfeihong" name="鑫飞鸿物流快递">鑫飞鸿物流快递</li><li class="ui-li" code="wu126xiyiaisi" name="希伊艾斯">希伊艾斯</li><li class="ui-li ui-li-separator" id="Y">Y</li><li class="ui-li" code="" name="邮政特快专递">邮政特快专递</li><li class="ui-li" code="054yousu" name="优速物流">优速物流</li><li class="ui-li" code="059Yunda" name="韵达快运">韵达快运</li><li class="ui-li" code="052yafeng" name="亚风速递">亚风速递</li><li class="ui-li" code="053yibang" name="一邦速递">一邦速递</li><li class="ui-li" code="060Yuntong" name="运通快递">运通快递</li><li class="ui-li" code="061yuefeng" name="越丰物流">越丰物流</li><li class="ui-li" code="zj001yixun" name="易迅自建物流">易迅自建物流</li><li class="ui-li" code="056yuantong" name="圆通速递">圆通速递</li><li class="ui-li" code="063yuananda" name="源安达快递">源安达快递</li><li class="ui-li" code="wu064yinjie" name="深圳银捷速递">深圳银捷速递</li><li class="ui-li" code="055yuancheng" name="远成物流">远成物流</li><li class="ui-li" code="058yuanzhijie" name="元智捷诚快递">元智捷诚快递</li><li class="ui-li" code="057yuanweifeng" name="源伟丰快递">源伟丰快递</li><li class="ui-li" code="062yuanfeihang" name="原飞航物流">原飞航物流</li><li class="ui-li ui-li-separator" id="Z">Z</li><li class="ui-li" code="065zhongtie" name="中铁快运">中铁快运</li><li class="ui-li" code="067zhongyou" name="中邮物流">中邮物流</li><li class="ui-li" code="066zhongtong" name="中通速递">中通速递</li><li class="ui-li" code="064zhaijisong" name="宅急送">宅急送</li><li class="ui-li" code="wu127zhongtie" name="中铁物流">中铁物流</li><li class="ui-li" code="wu128zhongxinda" name="忠信达">忠信达</li><li class="ui-li" code="wu019zhimakaimen" name="芝麻开门">芝麻开门</li>
+	</ul>
+
+</div>
+
+</body>
+</html>
