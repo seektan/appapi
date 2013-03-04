@@ -69,7 +69,7 @@ function remix(){
 
 	for(var i=0, len=_pfItems.length; i<len; i++){
 		var _oimg = _pfItems[i].querySelector(".photo img")
-        _ourl = _oimg.getAttribute("src") || imgs[i].getAttribute("init_src") || imgs[i].getAttribute("back_src"),
+        _ourl = _oimg.getAttribute("src") || _oimg.getAttribute("init_src") || _oimg.getAttribute("back_src"),
         _item={};
         _item.photo = _ourl;
          
