@@ -84,7 +84,7 @@ function remix(){
     }
 
 		 _item.org = _oimg;
-		_item.copycat = imgs[i].cloneNode(true);
+		_item.copycat = _oimg.cloneNode(true);
 		_item.copycat.className = "copycat";
 		_item.copycat.style.top = getXY(imgs[i]).top + "px";
 		_item.copycat.style.left = getXY(imgs[i]).left + "px";
