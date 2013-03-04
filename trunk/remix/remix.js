@@ -86,8 +86,8 @@ function remix(){
 		 _item.org = _oimg;
 		_item.copycat = _oimg.cloneNode(true);
 		_item.copycat.className = "copycat";
-		_item.copycat.style.top = getXY(imgs[i]).top + "px";
-		_item.copycat.style.left = getXY(imgs[i]).left + "px";
+		_item.copycat.style.top = getXY(_oimg).top + "px";
+		_item.copycat.style.left = getXY(_oimg).left + "px";
 		_item.link = _pfItems[i].querySelector(".photo a").getAttribute("href");
 		_item.price= _pfItems[i].querySelector(".pp_price").innerHTML;
 		_item.offered= _pfItems[i].querySelector(".total").innerHTML;
